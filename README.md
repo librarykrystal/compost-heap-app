@@ -1,1 +1,2 @@
 # compost-heap-app
+This is an app for creative writers to collect and manage their "compost heap" of ideas. Notes kept in this app can be tagged and filtered by topics such as setting, character trait, dialogue, or event, and this collection of topics can be edited by the user.
