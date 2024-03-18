@@ -13,10 +13,10 @@ updates:
       - "npm"
       - "dependencies"
       - "update"
-    allow:
+    # allow:
       # Allow specific libraries to be updated
       # By default, it would check everything, even in the lock
-      - "react*"
-      - "redux*"
-      - 
+      # - "react*"
+      # - "redux*"
+      # - 
     
