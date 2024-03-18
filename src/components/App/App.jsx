@@ -14,7 +14,7 @@ import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
-import UserPage from '../UserPage/UserPage';
+import UserHome from '../UserHome/UserHome';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
@@ -36,33 +36,22 @@ function App() {
       <div>
         <Nav />
         <Switch>
+
           <Redirect exact from="/" to="/home" />
 
-          <Route
-            exact
-            path="/about"
-          >
+          <Route exact path="/about">
             <AboutPage />
           </Route>
 
-          <ProtectedRoute
-            exact
-            path="/user"
-          >
-            <UserPage />
+          <ProtectedRoute exact path="/user">
+            <UserHome />
           </ProtectedRoute>
 
-          <ProtectedRoute
-            exact
-            path="/info"
-          >
+          <ProtectedRoute exact path="/info">
             <InfoPage />
           </ProtectedRoute>
 
-          <Route
-            exact
-            path="/login"
-          >
+          <Route exact path="/login">
             {user.id ?
               <Redirect to="/user" />
               :
@@ -70,10 +59,7 @@ function App() {
             }
           </Route>
 
-          <Route
-            exact
-            path="/registration"
-          >
+          <Route exact path="/registration">
             {user.id ?
               <Redirect to="/user" />
               :
@@ -81,10 +67,7 @@ function App() {
             }
           </Route>
 
-          <Route
-            exact
-            path="/home"
-          >
+          <Route exact path="/home">
             {user.id ?
               <Redirect to="/user" />
               :
@@ -96,6 +79,7 @@ function App() {
           <Route>
             <h1>404</h1>
           </Route>
+
         </Switch>
         <Footer />
       </div>
