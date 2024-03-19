@@ -15,13 +15,14 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
 import AddPage from '../AddPage/AddPage';
-import UserHome from '../UserHome/UserHome';
-import InfoPage from '../InfoPage/InfoPage';
 import DetailsPage from '../DetailsPage/DetailsPage';
+import EditPage from '../EditPage/EditPage';
+import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import SettingsPage from '../SettingsPage/SettingsPage';
+import UserHome from '../UserHome/UserHome';
 
 import './App.css';
 
@@ -56,6 +57,10 @@ function App() {
 
           <ProtectedRoute exact path="/details">
             <DetailsPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/edit">
+            <EditPage />
           </ProtectedRoute>
 
           <ProtectedRoute exact path="/info">
