@@ -19,6 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import SettingsPage from '../SettingsPage/SettingsPage';
 
 import './App.css';
 
@@ -49,6 +50,10 @@ function App() {
 
           <ProtectedRoute exact path="/info">
             <InfoPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/settings">
+            <SettingsPage />
           </ProtectedRoute>
 
           <Route exact path="/login">
