@@ -14,9 +14,9 @@ import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
-import AddPage from '../AddPage/AddPage';
+import AddItemPage from '../AddItemPage/AddItemPage';
 import DetailsPage from '../DetailsPage/DetailsPage';
-import EditPage from '../EditPage/EditPage';
+import EditItemPage from '../EditItemPage/EditItemPage';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
@@ -52,7 +52,7 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute exact path="/add">
-            <AddPage />
+            <AddItemPage />
           </ProtectedRoute>
 
           <ProtectedRoute exact path="/details">
@@ -60,7 +60,7 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute exact path="/edit">
-            <EditPage />
+            <EditItemPage />
           </ProtectedRoute>
 
           <ProtectedRoute exact path="/info">

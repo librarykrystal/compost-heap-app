@@ -4,6 +4,19 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import { useSelector } from 'react-redux';
 
+// When logged IN, NAV will include:
+// Home (link to UserHome)
+// New (link to AddPage)
+// Settings (link to SettingsPage)
+// About (link to AboutPage)
+// Info (link to InfoPage)
+// Log Out (log out button)
+
+// When logged OUT, NAV will include:
+// Log in (link to LoginPage)
+// About (link to AboutPage)
+
+
 function Nav() {
   const user = useSelector((store) => store.user);
 

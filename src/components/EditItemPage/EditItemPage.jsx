@@ -1,6 +1,16 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
 
+// EDIT ITEM PAGE is reached through DetailsPage and will include:
+// Ability to fully edit this item
+    // headline (text field)
+    // notes (text field)
+    // tag (dropdown)
+    // star (boolean, clicks on/off)
+// Ability to delete item
+// Button to return to item page
+// Button to return to home
+
 function EditPage() {
   const user = useSelector((store) => store.user);
   return (

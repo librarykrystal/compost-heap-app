@@ -1,7 +1,17 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
 
-function AddPage() {
+// ADD ITEM page will include:
+// Form -
+    // headline (text field)
+    // notes (text field)
+    // tag (dropdown)
+    // star (boolean clicks on/off)
+// Button to submit
+// Button to cancel / go back home without submitting
+
+
+function AddItemPage() {
   const user = useSelector((store) => store.user);
   return (
     <div className="container">
@@ -12,4 +22,4 @@ function AddPage() {
   );
 }
 
-export default AddPage;
+export default AddItemPage;

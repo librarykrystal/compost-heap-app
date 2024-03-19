@@ -2,6 +2,13 @@ import React from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import {useSelector} from 'react-redux';
 
+// USER HOME will include:
+// Main view of entire compost heap
+    // List of all item headlines, with color coding and star status
+        // OPTIONAL: possibly a single-line snippet of notes
+    // filterable by tag
+    // items are clickable (link to DetailsPage)
+
 function UserHome() {
   const user = useSelector((store) => store.user);
   return (
