@@ -14,6 +14,7 @@ import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
+import AddPage from '../AddPage/AddPage';
 import UserHome from '../UserHome/UserHome';
 import InfoPage from '../InfoPage/InfoPage';
 import DetailsPage from '../DetailsPage/DetailsPage';
@@ -49,12 +50,16 @@ function App() {
             <UserHome />
           </ProtectedRoute>
 
-          <ProtectedRoute exact path="/info">
-            <InfoPage />
+          <ProtectedRoute exact path="/add">
+            <AddPage />
           </ProtectedRoute>
 
           <ProtectedRoute exact path="/details">
             <DetailsPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/info">
+            <InfoPage />
           </ProtectedRoute>
 
           <ProtectedRoute exact path="/settings">
