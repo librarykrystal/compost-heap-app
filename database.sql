@@ -14,8 +14,9 @@ CREATE TABLE "heap" (
     "id" SERIAL PRIMARY KEY,
     "user_id" INT REFERENCES "user",
     "headline" VARCHAR (100) NOT NULL,
-    "details" VARCHAR (1000),
+    "notes" VARCHAR (1000),
     "tag" VARCHAR (1000) REFERENCES "tag",
+    "star" BOOLEAN,
 );
 
 CREATE TABLE "tag" (
