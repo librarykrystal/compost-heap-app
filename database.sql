@@ -51,5 +51,5 @@ VALUES
 (1, 'Framed by doppelganger', 'killer frames their doppelganger then goes in search of another one for next time', 5, false),
 (1, 'He looks at me as though I look like him', 'said by someone in love', 6, true),
 (1, 'Reveal character is a ghost', 'maybe they walk through a wall to prove it', 7, false),
-(1, 'Martian cats have two noses', 'boop is done with peace sign hand', 8, true);
-(1, 'Sidewalk pareidolia', 'Funny face in pavement in front of craft store on Euclid Ave', 0, false),
+(1, 'Martian cats have two noses', 'boop is done with peace sign hand', 8, true),
+(1, 'Sidewalk pareidolia', 'Funny face in pavement in front of craft store on Euclid Ave', null, false);
