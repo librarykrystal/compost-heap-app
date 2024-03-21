@@ -1,5 +1,6 @@
-import React from 'react';
-import {useSelector} from 'react-redux';
+import React, { useEffect, useState, useLayoutEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {useHistory} from 'react-router-dom';
 
 // USER HOME will include:
 // Main view of entire compost heap
@@ -9,7 +10,22 @@ import {useSelector} from 'react-redux';
     // items are clickable (link to DetailsPage)
 
 function UserHome() {
+
   const user = useSelector((store) => store.user);
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const heap = useSelector((store) => store.heap);
+
+  useEffect(() => {
+    dispatch({ type: 'FETCH_USER_HEAP' });
+  }, []);
+
+  // Makes each view load scrolled to top
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0)
+  }, []);
+
+
   return (
     <div className="container">
       <h2>Welcome, {user.username}!</h2>
