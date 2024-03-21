@@ -45,9 +45,11 @@ function UserHome() {
   const history = useHistory();
   const dispatch = useDispatch();
   const heap = useSelector((store) => store.heap);
+  const tagList = useSelector((store) => store.tag);
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER_HEAP' });
+    dispatch({ type: 'FETCH_ALL_TAGS' });
   }, []);
 
   // Makes each view load scrolled to top
@@ -56,7 +58,7 @@ function UserHome() {
   }, []);
 
   console.log('HEAP:', heap);
-
+  console.log('TAG LIST:', tagList);
 
   return (
     <ThemeProvider theme={theme}>
@@ -65,20 +67,36 @@ function UserHome() {
       <p>Your ID is: {user.id}</p>
       <p>This is your HEAP!</p>
 
+{/* SHOW TAGS for TESTING*/}
+      {tagList.length >0 &&
+        <div className="heap">
+          {tagList.map(tag => {
+            return (
+              <div key={tag.id} >
+                <div className="homeListItem" >
+                  <Typography sx={{ fontSize: 20, fontWeight: 700, mt:2, color: `${tag.hex}`}}>{tag.label}</Typography>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      }
+
+{/* HEAP LIST */}
       {heap.length >0 &&
-      <div className="heap">
-                {heap.map(idea => {
-                    return (
-                        <div key={idea.id} >
-                            <div className="homeListItem" >
-                              <Typography sx={{ fontSize: 20, fontWeight: 700, mt:2}}>{idea.headline}</Typography>
-                              <Typography>{idea.notes}</Typography>
-                            </div>
-                        </div>
-                    );
-                })}
-            </div>
-}
+        <div className="heap">
+          {heap.map(idea => {
+            return (
+              <div key={idea.id} >
+                <div className="homeListItem" >
+                  <Typography sx={{ fontSize: 20, fontWeight: 700, mt:2}}>{idea.headline}</Typography>
+                  <Typography>{idea.notes}</Typography>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      }
 
     </div>
     </ThemeProvider>
