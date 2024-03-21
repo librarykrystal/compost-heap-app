@@ -25,12 +25,30 @@ function UserHome() {
     window.scrollTo(0, 0)
   }, []);
 
+  console.log('HEAP:', heap);
+
 
   return (
     <div className="container">
       <h2>Welcome, {user.username}!</h2>
       <p>Your ID is: {user.id}</p>
-      <p>This is where the HEAP list will be.</p>
+      <p>This is your HEAP!</p>
+
+      {heap.length >0 &&
+      <div className="heap">
+                {heap.map(idea => {
+                    return (
+                        <div key={idea.id} >
+                            <div>
+                              <h4>{idea.headline}</h4>
+                              <p>{idea.notes}</p>
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
+}
+
     </div>
   );
 }

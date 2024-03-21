@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const app = express();
 require('dotenv').config();
 const PORT = process.env.PORT || 5001;
@@ -10,6 +11,10 @@ const passport = require('./strategies/user.strategy');
 // Route Includes
 const userRouter = require('./routes/user.router');
 const heapRouter = require('./routes/heap.router');
+
+// Body parser middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Express Middleware
 app.use(express.json());
