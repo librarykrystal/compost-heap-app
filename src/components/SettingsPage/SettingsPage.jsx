@@ -15,6 +15,28 @@ import Button from '@mui/material/Button';
 // Link to TagsPage
 // OPTIONAL FEATURE: dark/light mode options
 
+// Material UI Theming
+const theme = createTheme({
+  typography: {
+    fontFamily: [
+      'Libre Baskerville',
+    ],
+  },
+  palette: {
+    primary: {
+      main: '#d9d9d9',
+    },
+    secondary: {
+      main: grey[700],
+      contrastText: "#fff",
+    },
+    alert: {
+      main: grey[700],
+      contrastText: "#fff",
+    },
+  },
+});
+
 function Settings() {
   const user = useSelector((store) => store.user);
   const history = useHistory();
@@ -26,9 +48,10 @@ function Settings() {
   }
 
   return (
+    <ThemeProvider theme={theme}>
     <div className="container">
-      <h2>Settings Page for {user.username}!</h2>
-      <p>Your ID is: {user.id}</p>
+      <h2>Settings Page</h2>
+      <p>User: {user.username} / ID: {user.id}</p>
 
       <Button
         variant="contained"
@@ -39,6 +62,7 @@ function Settings() {
       </Button>
 
     </div>
+    </ThemeProvider>
   );
 }
 
