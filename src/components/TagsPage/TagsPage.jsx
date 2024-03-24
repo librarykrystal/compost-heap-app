@@ -53,6 +53,12 @@ function TagsPage() {
     window.scrollTo(0, 0)
   }, []);
 
+  // Go to SettingsPage (cancel) without submitting and changes:
+  const goSettingsCancel = (event) => {
+    event.preventDefault();
+    history.push("/settings");
+  }
+
   console.log('TAG LIST:', tagList);
 
   return (
@@ -74,6 +80,15 @@ function TagsPage() {
           })}
         </div>
       }
+      <br /><br />
+
+      <Button
+        variant="contained"
+        color="primary"
+        size="large"
+        // startIcon={<CheckBoxIcon />}
+        onClick={goSettingsCancel}>BACK TO SETTINGS
+      </Button>
 
     </div>
   );
