@@ -19,7 +19,13 @@ Container
 -------------------------------------------------------------------------------- */
 
 .container {
-  padding: 20px;
+  margin-top: 182px;
+  padding: 0px;
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 /* --------------------------------------------------------------------------------

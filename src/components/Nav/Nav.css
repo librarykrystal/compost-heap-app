@@ -1,24 +1,46 @@
-.nav {
-  /* flex box layout */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  margin: 0 0 30px;
-  background-color: darkgoldenrod;
-  overflow: hidden;
+.navOuterContainer{
+  position: fixed;
+  top: 0px;
+  overflow: visible;
+  width: 100%;
+  z-index: 5000;
 }
 
-.nav a {
+.navMobile {
+  display: grid;
+  height: 150px;
+  width: 100%;
+  overflow: visible;
+  grid-template-rows: 100px 50px;
+  overflow: visible;
+}
+
+.navMobile a {
   text-decoration: none;
 }
 
-.nav-title {
-  font-size: 24px;
+.navMobileUpper {
+  background-image: linear-gradient(to top, #c8c8c8, white);
+  grid-row-start: 1;
+  display: flex;
+  justify-content: start;
+  overflow: visible;
+}
+
+.navLogo {
+  font-family: 'Neucha', cursive;
+  font-size: 42px;
   font-weight: 700;
-  color: #f2f2f2;
+  color: gray;
   padding-left: 10px;
-  margin: 0;
+}
+
+.navMobileLower {
+  background-color: gray;
+  grid-row-start: 2;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .navLink {
@@ -26,17 +48,17 @@
   color: #f2f2f2;
   background-color: darkgoldenrod;
   text-align: center;
-  padding: 24px 10px;
+  padding: 20px 10px;
   text-decoration: none;
   font-size: 15px;
 
   /* these last two make the logout button in
   the nav bar look like another link */
-  border: none;
+  /* border: none;
   cursor: pointer;
-  outline: 0;
+  outline: 0; */
 }
 
 .navLink:hover {
-  background-color: darkgoldenrod;
+  background-color: goldenrod;
 }

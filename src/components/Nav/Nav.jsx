@@ -8,6 +8,7 @@ import {useHistory} from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import '@fontsource/libre-baskerville';
+import '@fontsource/neucha';
 import grey from '@mui/material/colors/grey';
 import Stack from '@mui/material/Stack';
 import HomeIcon from '@mui/icons-material/Home';
@@ -30,7 +31,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 // When logged OUT, NAV will include:
 // Log in (link to LoginPage)
-// About (link to AboutPage)
+// About (link to AboutPage)  —or these pages can just have buttons to go back and forth?
 
 // Material UI Theming
 const theme = createTheme({
@@ -59,11 +60,19 @@ function Nav() {
   const user = useSelector((store) => store.user);
 
   return (
-    <div className="nav">
-      <Link to="/home">
-        <h2 className="nav-title">Compost Heap</h2>
-      </Link>
-      <div>
+    <div className="navOuterContainer">
+      <div className="navMobile">
+
+      <div className="navMobileUpper">
+        <Link to="/home">
+          {/* LOGO IMAGE WILL GO HERE*/}
+          {/* <img className="logoImage" src={logoV} alt='logo'/> */}
+          <h2 className="navLogo">Heap</h2>
+        </Link>
+      </div>
+        
+
+      <div className="navMobileLower">
         {/* If no user is logged in, show these links */}
         {!user.id && (
           // If there's no user, show login/registration links
@@ -83,6 +92,10 @@ function Nav() {
               Info Page
             </Link>
 
+            <Link className="navLink" to="/settings">
+              Settings
+            </Link>
+
             {/* <LogOutButton className="navLink" /> */}
           </>
         )}
@@ -91,6 +104,7 @@ function Nav() {
           About
         </Link>
       </div>
+    </div>
     </div>
   );
 }
