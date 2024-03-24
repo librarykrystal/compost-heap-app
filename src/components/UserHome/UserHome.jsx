@@ -91,7 +91,7 @@ function UserHome() {
             // console.log("TAG ID IN .MAP", tagId);
             let tag = tagList.find(item => item.id == +tagId);
             let color;
-            {tag == null ? color = '#808080' : color = `${tag.hex}`};
+            {tag == null || tag == NaN || tag == 0 ? color = '#808080' : color = `${tag.hex}`};
             // console.log("COLOR:", color);
             return (
               <div key={idea.id}>
