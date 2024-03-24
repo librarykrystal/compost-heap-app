@@ -22,6 +22,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import SettingsPage from '../SettingsPage/SettingsPage';
+import TagsPage from '../TagsPage/TagsPage';
 import UserHome from '../UserHome/UserHome';
 
 import './App.css';
@@ -69,6 +70,10 @@ function App() {
 
           <ProtectedRoute exact path="/settings">
             <SettingsPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/tags">
+            <TagsPage />
           </ProtectedRoute>
 
           <Route exact path="/login">

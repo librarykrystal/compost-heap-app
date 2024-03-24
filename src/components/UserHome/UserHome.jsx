@@ -69,7 +69,7 @@ function UserHome() {
       <h3>User: {user.username} / ID: {user.id}</h3>
 
 {/* SHOW TAGS for CONVENIENT TESTING/REFERENCE */}
-      {tagList.length >0 &&
+      {/* {tagList.length >0 &&
         <div className="heap">
           {tagList.map(tag => {
             return (
@@ -81,7 +81,7 @@ function UserHome() {
             );
           })}
         </div>
-      }
+      } */}
 
 {/* HEAP LIST */}
       {(heap.length >0 && tagList.length >0) &&
