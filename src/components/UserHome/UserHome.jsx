@@ -88,14 +88,15 @@ function UserHome() {
         <div className="heap">
           {heap.map(idea => {
             let tagId = +`${idea.tag_id}`;
-            console.log("TAG ID IN .MAP", tagId);
-            let color = tagList.find(item => item.id == +tagId);
-            console.log("COLOR:", color);
-
+            // console.log("TAG ID IN .MAP", tagId);
+            let tag = tagList.find(item => item.id == +tagId);
+            let color;
+            {tag == null ? color = '#808080' : color = `${tag.hex}`};
+            // console.log("COLOR:", color);
             return (
               <div key={idea.id}>
                 <div className="homeListItem" >
-                  <Typography sx={{ fontSize: 20, fontWeight: 700, mt:2, color: `${color.hex}` }} >{idea.headline}</Typography>
+                  <Typography sx={{ fontSize: 20, fontWeight: 700, mt:2, color: `${color}` }} >{idea.headline}</Typography>
                   <Typography>{idea.notes}</Typography>
                 </div>
               </div>
