@@ -50,12 +50,11 @@ function ItemPage() {
   const dispatch = useDispatch();
   const heap = useSelector((store) => store.heap);
   const tagList = useSelector((store) => store.tag);
-  const item = useSelector((store) => store.item);
+  const idea = useSelector((store) => store.item);
   const { id } = useParams();
 
   useEffect(() => {
-    // dispatch({ type: 'FETCH_USER_HEAP' });
-    // dispatch({ type: 'FETCH_ITEM', payload: id });
+    dispatch({ type: 'FETCH_IDEA', payload: id });
     dispatch({ type: 'FETCH_ALL_TAGS' });
   }, []);
 
@@ -71,10 +70,13 @@ function ItemPage() {
       <div className="container">
         <Typography sx={{ fontSize: 28, fontWeight: 700 }}>Item details page</Typography>
         <Typography sx={{ mb:5 }}>User: {user.username} / ID: {user.id}</Typography>
-        { id ? 
-          <Typography>ID #{id} HAS ARRIVED</Typography>
+        { idea ? 
+          <>
+            <Typography>ID #{id} HAS ARRIVED</Typography>
+            <Typography>{idea.headline}</Typography>
+          </>
           :
-          <Typography>NO ID. HOW SAD.</Typography>
+          <Typography>NO IDEA. HOW SAD.</Typography>
         }
       </div>
     </ThemeProvider>

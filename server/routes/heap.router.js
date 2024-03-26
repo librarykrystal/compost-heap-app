@@ -21,6 +21,29 @@ router.get('/', (req, res) => {
   }
 });
 
+// GET (DETAILS of ONE IDEA by ID)
+router.get('/:id', (req, res) => {
+  console.log('heap GET ONE route');
+  console.log('is authenticated?', req.isAuthenticated());
+  console.log('user', req.user);
+  console.log('Get IDEA by ID req.params.id:', req.params.id);
+    // only do GET if authenticated:
+  if (req.isAuthenticated()){
+    let id = req.params.id;
+    const queryText = `SELECT * FROM idea WHERE "id" = $1 AND "user_id" = ${req.user.id};`;
+    pool.query(queryText, [id])
+    .then((result) => {
+        console.log('GET IDEA by ID RESULTS:', result);
+        res.send(result.rows);
+    })
+    .catch((error) => {
+        console.log('Get IDEA by ID ERROR:', error);
+        res.sendStatus(500);
+    })
+  } else {
+    res.sendStatus(403);
+  }
+  });
 
 
 
