@@ -59,6 +59,16 @@ function UserHome() {
     window.scrollTo(0, 0)
   }, []);
 
+  // Route to details of clicked item
+  const goToDetails = (itemId) => {
+    console.log('goToDetails CLICKED, ID:', itemId);
+    // dispatch({
+    //     type: 'SET_ITEM_ID',
+    //     payload: itemId
+    //   });
+    history.push(`/details/${itemId}`);
+  }
+
   console.log('HEAP:', heap);
   console.log('TAG LIST:', tagList);
 
@@ -95,7 +105,7 @@ function UserHome() {
             // console.log("COLOR:", color);
             return (
               <div key={idea.id}>
-                <div className="homeListItem" >
+                <div className="homeListItem" onClick={() => goToDetails(idea.id)} >
                   <Typography sx={{ fontSize: 20, fontWeight: 700, mt:2, color: `${color}` }} >{idea.headline}</Typography>
                   <Typography>{idea.notes}</Typography>
                 </div>

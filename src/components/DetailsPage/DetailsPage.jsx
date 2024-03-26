@@ -51,7 +51,7 @@ function ItemPage() {
   const heap = useSelector((store) => store.heap);
   const tagList = useSelector((store) => store.tag);
   const item = useSelector((store) => store.item);
-  // const { id } = useParams();
+  const { id } = useParams();
 
   useEffect(() => {
     // dispatch({ type: 'FETCH_USER_HEAP' });
@@ -64,15 +64,17 @@ function ItemPage() {
     window.scrollTo(0, 0)
   }, []);
 
+  console.log("PARAM ID:", id);
+
   return (
     <ThemeProvider theme={theme}>
       <div className="container">
-        <h2>Item details page</h2>
+        <Typography sx={{ fontSize: 28, fontWeight: 700 }}>Item details page</Typography>
         <Typography sx={{ mb:5 }}>User: {user.username} / ID: {user.id}</Typography>
-        { item ? 
-          <Typography>ITEM #{item.id} HAS ARRIVED</Typography>
+        { id ? 
+          <Typography>ID #{id} HAS ARRIVED</Typography>
           :
-          <Typography>NO ITEM. HOW SAD.</Typography>
+          <Typography>NO ID. HOW SAD.</Typography>
         }
       </div>
     </ThemeProvider>

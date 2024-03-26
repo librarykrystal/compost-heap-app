@@ -56,7 +56,7 @@ function App() {
             <AddItemPage />
           </ProtectedRoute>
 
-          <ProtectedRoute exact path="/details">
+          <ProtectedRoute exact path="/details/:id">
             <DetailsPage />
           </ProtectedRoute>
 
