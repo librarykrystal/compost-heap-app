@@ -47,7 +47,7 @@ function UserHome() {
   const history = useHistory();
   const dispatch = useDispatch();
   const heap = useSelector((store) => store.heap);
-  const tagList = useSelector((store) => store.tag);
+  const tagList = useSelector((store) => store.tags);
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER_HEAP' });
@@ -60,8 +60,8 @@ function UserHome() {
   }, []);
 
   // Route to details of clicked item
-  const goToDetails = (itemId) => {
-    console.log('goToDetails CLICKED, ID:', itemId);
+  const goToDetails = (itemId, tagId) => {
+    console.log('goToDetails CLICKED, IDs:', itemId, tagId);
     // dispatch({
     //     type: 'SET_ITEM_ID',
     //     payload: itemId
@@ -105,7 +105,7 @@ function UserHome() {
             // console.log("COLOR:", color);
             return (
               <div key={idea.id}>
-                <div className="homeListItem" onClick={() => goToDetails(idea.id)} >
+                <div className="homeListItem" onClick={() => goToDetails(idea.id, tag.id)} >
                   <Typography sx={{ fontSize: 20, fontWeight: 700, mt:2, color: `${color}` }} >{idea.headline}</Typography>
                   <Typography>{idea.notes}</Typography>
                 </div>
