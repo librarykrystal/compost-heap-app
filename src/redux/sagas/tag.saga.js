@@ -1,17 +1,17 @@
 import axios from 'axios';
-import { put, takeEvery } from 'redux-saga/effects';
+import { put, takeEvery, takeLatest } from 'redux-saga/effects';
 
 // WATCHER SAGA
 function* tagSaga() {
-  yield takeEvery('FETCH_ALL_TAGS', fetchEm);
+  yield takeLatest('FETCH_ALL_TAGS', fetchEm);
 }
 
 // WORKER SAGA for GET ALL
 function* fetchEm(action) {
-  console.log('Tags GET ALL worker SAGA');
+  // console.log('Tags GET ALL worker SAGA');
   try {
     const tags = yield axios.get('/api/tag');
-    console.log('get all result:', tags.data);
+    console.log('get ALL TAGS SAGA result:', tags.data);
     yield put({ type: 'SET_TAGS', payload: tags.data });
   } catch (error) {
     console.log('ERROR GETTING TAGS:', error);
