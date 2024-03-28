@@ -8,6 +8,8 @@ import Typography from '@mui/material/Typography';
 import '@fontsource/cabin/400.css';
 import '@fontsource/cabin/700.css';
 import '@fontsource/libre-baskerville';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
 import grey from '@mui/material/colors/grey';
 import Button from '@mui/material/Button';
 import WarningIcon from '@mui/icons-material/Warning';
@@ -105,10 +107,13 @@ function UserHome() {
             // console.log("COLOR:", color);
             return (
               <div key={idea.id}>
-                <div className="homeListItem" onClick={() => goToDetails(idea.id, tag.id)} >
-                  <Typography sx={{ fontSize: 20, fontWeight: 700, mt:2, color: `${color}` }} >{idea.headline}</Typography>
-                  <Typography>{idea.notes}</Typography>
-                </div>
+                <Card variant="outlined" className="homeListCard" sx={{ m:2, p:1, boxShadow: 1}} onClick={() => goToDetails(idea.id, tag.id)}>
+                {/* <div className="homeListItem" onClick={() => goToDetails(idea.id, tag.id)} > */}
+                  <Typography sx={{ fontSize: 20, fontWeight: 700, color: `${color}` }} >{idea.headline}</Typography>
+                  <Typography >{idea.notes}</Typography>
+                
+                {/* </div> */}
+                </Card>
               </div>
             );
           })}

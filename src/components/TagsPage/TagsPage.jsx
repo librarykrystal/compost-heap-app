@@ -54,7 +54,7 @@ function TagsPage() {
   const user = useSelector((store) => store.user);
   const history = useHistory();
   const dispatch = useDispatch();
-  const tagList = useSelector((store) => store.tag);
+  const tagList = useSelector((store) => store.tags);
   const label = { inputProps: { 'aria-label': 'Switch demo' } };
 
   useEffect(() => {
