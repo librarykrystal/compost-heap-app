@@ -13,6 +13,9 @@ import '@fontsource/cabin/700.css';
 import '@fontsource/libre-baskerville';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import IconButton from '@mui/material/IconButton';
+import StarIcon from '@mui/icons-material/Star';
+import StarOutlineIcon from '@mui/icons-material/StarOutline';
 import grey from '@mui/material/colors/grey';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -65,7 +68,7 @@ function AddItemPage() {
   // State hooks for entry form
   const [headline, setHeadline] = useState('');
   const [notes, setNotes] = useState('');
-  const [tag, setTag] = useState(null);  // this may need to be data type number?  TEST
+  const [tag, setTag] = useState(0);
   const [star, setStar] = useState(false);
 
   // CONSOLE LOG array of all form selections as they happen:
@@ -117,6 +120,67 @@ function AddItemPage() {
     <div className="container">
       <Typography sx={{ fontSize: 20, fontWeight: 700 }}>ADD NEW ITEM PAGE</Typography>
       <Typography sx={{ mb:5}}>User: {user.username} / ID: {user.id}</Typography>
+
+      {/* TEXT input for HEADLINE */}
+      <TextField 
+        fullWidth
+        id="headline"
+        required
+        label="Headline"
+        variant="standard"
+        value={headline}
+        onChange={(e) => setHeadline(e.target.value)}
+      />
+      <br /><br />
+
+      {/* TEXT BOX input for NOTES */}
+      <TextField
+        id="notes"
+        label="Notes"
+        fullWidth
+        multiline
+        rows={8}
+        variant="outlined"
+        value={notes}
+        onChange={(e) => setNotes(e.target.value)}
+      />
+      <br /><br />
+
+      {/* DROPDOWN input for TAG */}
+      {/*  TO DO   !!!THIS WILL NEED TO MAP THROUGH TAGS from DATABASE!!! */}
+      <FormControl fullWidth>
+            <InputLabel id="tag">Tag</InputLabel>
+              <Select
+                required
+                labelId="tag"
+                id="tag"
+                value={tag}
+                label="Tag"
+                onChange={(e) => setTag(e.target.value)}
+              >
+              <MenuItem value="0">None</MenuItem>
+              <MenuItem value="Tag 1">Tag 1</MenuItem>
+              <MenuItem value="Tag 2">Tag 2</MenuItem>
+              <MenuItem value="etc.">etc.</MenuItem>
+            </Select>
+          </FormControl>
+          <br /><br />
+
+          <div className="starToggleContainer">
+            {/* FAVORITE selection conditional & toggle */}
+            <span className="newStar">
+              { star == true ?
+                <IconButton aria-label="unstar" onClick={handleStar}>
+                  <StarIcon fontSize="large"/>
+                </IconButton>
+              :
+              <IconButton aria-label="toxic" onClick={handleStar}>
+                <StarOutlineIcon fontSize="large"/>
+              </IconButton>
+              }
+            </span>
+          </div>
+          <br />
 
       {/* SUBMIT button */}
       <Button

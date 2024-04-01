@@ -67,7 +67,7 @@ function Nav() {
         <Link to="/home">
           {/* LOGO IMAGE WILL GO HERE*/}
           {/* <img className="logoImage" src={logoV} alt='logo'/> */}
-          <h2 className="navLogo">Heap</h2>
+          <h2 className="navLogo">Compost Heap</h2>
         </Link>
       </div>
         
