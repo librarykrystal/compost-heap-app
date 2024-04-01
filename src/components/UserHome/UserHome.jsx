@@ -61,6 +61,12 @@ function UserHome() {
     window.scrollTo(0, 0)
   }, []);
 
+  // Go to AddItemPage:
+  const goNew = (event) => {
+    event.preventDefault();
+    history.push("/new");
+  }
+
   // Route to details of clicked item
   const goToDetails = (itemId, tagId) => {
     console.log('goToDetails CLICKED, IDs:', itemId, tagId);
@@ -94,6 +100,14 @@ function UserHome() {
           })}
         </div>
       } */}
+
+      <Button
+        variant="contained"
+        color="primary"
+        size="large"
+        // startIcon={<CheckBoxIcon />}
+        onClick={goNew}>ADD NEW IDEA
+      </Button>
 
 {/* HEAP LIST */}
       {(heap.length >0 && tagList.length >0) &&

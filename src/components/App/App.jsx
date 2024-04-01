@@ -52,7 +52,7 @@ function App() {
             <UserHome />
           </ProtectedRoute>
 
-          <ProtectedRoute exact path="/add">
+          <ProtectedRoute exact path="/new">
             <AddItemPage />
           </ProtectedRoute>
 
