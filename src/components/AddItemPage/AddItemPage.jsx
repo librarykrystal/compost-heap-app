@@ -162,18 +162,19 @@ function AddItemPage() {
             label="Tag"
             onChange={(e) => setTag(e.target.value)}
           >
+          {/* First tag option is 0/NONE - DELETE IF "NONE" BECOMES A ROW IN DATABASE */}
           <MenuItem value="0">None</MenuItem>
           {/* mapping through user's collection of tags from database */}
-              {tagList.map(tag => {
-                return (
-                    <MenuItem
-                      key={tag.id}
-                      value={tag.id}>
-                      <Typography display="inline" sx={{ mr:1, color: `${tag.hex}`}}>◼︎</Typography>
-                      <Typography display="inline" >{tag.label}</Typography>
-                    </MenuItem>
-                );
-              })}
+          {tagList.map(tag => {
+            return (
+                <MenuItem
+                  key={tag.id}
+                  value={tag.id}>
+                  <Typography display="inline" sx={{ mr:1, color: `${tag.hex}`}}>◼︎</Typography>
+                  <Typography display="inline" >{tag.label}</Typography>
+                </MenuItem>
+            );
+          })}
         </Select>
       </FormControl>
       <br /><br />

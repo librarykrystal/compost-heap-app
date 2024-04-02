@@ -16,7 +16,7 @@ img {
 }
 
 /* --------------------------------------------------------------------------------
-General Container
+General Containers
 -------------------------------------------------------------------------------- */
 
 .container {
@@ -25,6 +25,11 @@ General Container
   flex-direction: column;
   align-items: center;
   width: 100%;
+}
+
+.notes {
+  margin: 20px;
+  max-width: 500px;
 }
 
 

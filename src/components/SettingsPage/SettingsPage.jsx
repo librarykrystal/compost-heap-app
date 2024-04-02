@@ -10,6 +10,8 @@ import '@fontsource/cabin/700.css';
 import '@fontsource/libre-baskerville';
 import grey from '@mui/material/colors/grey';
 import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+import Switch from '@mui/material/Switch';
 
 // SETTINGS will include:
 // Link to TagsPage
@@ -47,11 +49,18 @@ function Settings() {
     history.push("/tags");
   }
 
+  const label = { inputProps: { 'aria-label': 'Switch demo' } };
+
   return (
     <ThemeProvider theme={theme}>
     <div className="container">
       <h2>Settings Page</h2>
       <p>User: {user.username} / ID: {user.id}</p>
+
+      <Stack spacing={2} direction="row" sx={{ mb: 2, mt: 2 }} alignItems="center">
+        <Typography>Show tag names on home screen</Typography>
+      <Switch color="secondary" {...label} />
+      </Stack>
 
       <Button
         variant="contained"

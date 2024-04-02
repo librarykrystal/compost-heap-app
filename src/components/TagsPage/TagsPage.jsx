@@ -80,10 +80,7 @@ function TagsPage() {
       <h2>Tags page</h2>
       <p>User: {user.username} / ID: {user.id}</p>
 
-      <Stack spacing={2} direction="row" sx={{ mb: 2, mt: 2 }} alignItems="center">
-        <Typography>Show tag names on home screen</Typography>
-      <Switch color="secondary" {...label} />
-      </Stack>
+      
 
       {/* List of TAGS for current user */}
       {tagList.length >0 &&

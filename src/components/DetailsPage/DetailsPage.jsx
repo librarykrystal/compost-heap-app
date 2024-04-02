@@ -11,6 +11,8 @@ import '@fontsource/cabin/700.css';
 import '@fontsource/libre-baskerville';
 import grey from '@mui/material/colors/grey';
 import Button from '@mui/material/Button';
+import StarIcon from '@mui/icons-material/Star';
+import Stack from '@mui/material/Stack';
 
 // DETAILS page will include:
 // Full item details-
@@ -64,6 +66,11 @@ function ItemPage() {
 
   console.log("TAG DATA:", tag);
 
+  const goEdit = (e) => {
+    e.preventDefault();
+    console.log("goEdit was clicked.");
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <div className="container">
@@ -73,16 +80,31 @@ function ItemPage() {
         { Object.keys(idea).length > 0 && Object.keys(tag).length > 0 ?
           <>
             <Typography sx={{ fontSize: 22, fontWeight: 700, mt:3 }} >{idea.headline}</Typography>
-            <Typography>{idea.notes}</Typography>
-            <Typography sx={{ mt:3, mb:3, color: `${tag.tag_hex}` }}>tag: {tag.tag_label}</Typography>
+            
+            <Stack direction="row" sx={{ mt: 2 }} alignItems="center">
+              <Typography sx={{ mr:1, color: `${tag.tag_hex}`}}>◼︎</Typography>
+              <Typography>{tag.tag_label}</Typography>
+              <Typography sx={{ ml:1, color: `${tag.tag_hex}`}}>◼︎</Typography>
+            </Stack>
             {/* TO DO: change above line to another conditional considering NO TAG situations */}
-            {/* if there is no tag, maybe put a button to add one */}
-            <Typography>star?</Typography>
-            {idea.star ?
-              <Typography>yes</Typography>
-            :
-              <Typography>no</Typography>
+            {/* if there is no tag, show a button to add one */}
+            {idea.star &&
+              <StarIcon />
             }
+
+            <div className="notes">
+              <Typography mt={2} mb={4}>{idea.notes}</Typography>
+            </div>
+
+            <Button
+              variant="contained"
+              color="secondary"
+              size="large"
+              // startIcon={<DisabledByDefaultIcon />}
+              onClick={goEdit}>EDIT
+            </Button>
+
+
           </>
           :
           <Typography>NO IDEA. HOW SAD.</Typography>

@@ -12,6 +12,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import grey from '@mui/material/colors/grey';
 import Button from '@mui/material/Button';
+import StarIcon from '@mui/icons-material/Star';
 import WarningIcon from '@mui/icons-material/Warning';
 
 // USER HOME will include:
@@ -117,14 +118,19 @@ function UserHome() {
             // console.log("TAG ID IN .MAP", tagId);
             let tag = tagList.find(item => item.id == +tagId);
             let color;
-            {tag == null || tag == 0 ? color = '#808080' : color = `${tag.hex}`};
+            {tag == null || tag == 0 ? color = '#fff' : color = `${tag.hex}`};
             // console.log("COLOR:", color);
             return (
               <div key={idea.id}>
                 <Card variant="outlined" className="homeListCard" sx={{ m:2, p:1, boxShadow: 1}} onClick={() => goToDetails(idea.id, tag.id)}>
                 {/* <div className="homeListItem" onClick={() => goToDetails(idea.id, tag.id)} > */}
-                  <Typography sx={{ fontSize: 20, fontWeight: 700, color: `${color}` }} >{idea.headline}</Typography>
+                  {/* <Typography display="inline" sx={{ mr:1, fontSize: 20, color: `${color}`}}>◼︎</Typography> */}
+                  <Typography display="inline" sx={{ fontSize: 20, fontWeight: 700 }} >{idea.headline}</Typography>
                   <Typography >{idea.notes}</Typography>
+                  <Typography display="inline" sx={{ mr:1, fontSize: 24, color: `${color}`}}>◼︎</Typography>
+                  {idea.star &&
+                    <StarIcon sx={{ fontSize: 20 }}/>
+                  }
                 
                 {/* </div> */}
                 </Card>
