@@ -120,6 +120,8 @@ function AddItemPage() {
     <div className="container">
       <Typography sx={{ fontSize: 20, fontWeight: 700 }}>ADD NEW ITEM PAGE</Typography>
       <Typography sx={{ mb:5}}>User: {user.username} / ID: {user.id}</Typography>
+      
+      <div className="addItemForm">
 
       {/* TEXT input for HEADLINE */}
       <TextField 
@@ -201,6 +203,7 @@ function AddItemPage() {
         // startIcon={<DisabledByDefaultIcon />}
         onClick={goBack}>CANCEL
       </Button>
+      </div>
 
       {/* MODAL — shows when submit button is clicked */}
       {/* <Modal  show={showModal}/> */}
