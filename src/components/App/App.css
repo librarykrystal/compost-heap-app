@@ -27,8 +27,9 @@ General Container
   width: 100%;
 }
 
+
 /* --------------------------------------------------------------------------------
-Home - grid divs here if not using MUI cards
+UserHome - grid divs here if not using MUI cards
 -------------------------------------------------------------------------------- */
 
 .homeListCard {
@@ -43,6 +44,10 @@ Home - grid divs here if not using MUI cards
   grid-column-start: 2;
 }
 
+
+/* --------------------------------------------------------------------------------
+AddItemPage
+-------------------------------------------------------------------------------- */
 
 .addItemForm {
   display: flex;
