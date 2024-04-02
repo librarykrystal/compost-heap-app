@@ -61,6 +61,7 @@ const theme = createTheme({
 function AddItemPage() {
 
   const user = useSelector((store) => store.user);
+  const tagList = useSelector((store) => store.tags);
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -81,6 +82,7 @@ function AddItemPage() {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
+    dispatch({ type: 'FETCH_ALL_TAGS' });
   }, []);
 
   // Makes each view load scrolled to top
@@ -117,10 +119,11 @@ function AddItemPage() {
 
   return (
     <ThemeProvider theme={theme}>
+      {tagList.length >0 &&
     <div className="container">
       <Typography sx={{ fontSize: 20, fontWeight: 700 }}>ADD NEW ITEM PAGE</Typography>
       <Typography sx={{ mb:5}}>User: {user.username} / ID: {user.id}</Typography>
-      
+
       <div className="addItemForm">
 
       {/* TEXT input for HEADLINE */}
@@ -149,40 +152,47 @@ function AddItemPage() {
       <br /><br />
 
       {/* DROPDOWN input for TAG */}
-      {/*  TO DO   !!!THIS WILL NEED TO MAP THROUGH TAGS from DATABASE!!! */}
       <FormControl fullWidth>
-            <InputLabel id="tag">Tag</InputLabel>
-              <Select
-                required
-                labelId="tag"
-                id="tag"
-                value={tag}
-                label="Tag"
-                onChange={(e) => setTag(e.target.value)}
-              >
-              <MenuItem value="0">None</MenuItem>
-              <MenuItem value="Tag 1">Tag 1</MenuItem>
-              <MenuItem value="Tag 2">Tag 2</MenuItem>
-              <MenuItem value="etc.">etc.</MenuItem>
-            </Select>
-          </FormControl>
-          <br /><br />
+        <InputLabel id="tag">Tag</InputLabel>
+          <Select
+            required
+            labelId="tag"
+            id="tag"
+            value={tag}
+            label="Tag"
+            onChange={(e) => setTag(e.target.value)}
+          >
+          <MenuItem value="0">None</MenuItem>
+          {/* mapping through user's collection of tags from database */}
+              {tagList.map(tag => {
+                return (
+                    <MenuItem
+                      key={tag.id}
+                      value={tag.id}>
+                      <Typography display="inline" sx={{ mr:1, color: `${tag.hex}`}}>◼︎</Typography>
+                      <Typography display="inline" >{tag.label}</Typography>
+                    </MenuItem>
+                );
+              })}
+        </Select>
+      </FormControl>
+      <br /><br />
 
-          <div className="starToggleContainer">
-            {/* FAVORITE selection conditional & toggle */}
-            <span className="newStar">
-              { star == true ?
-                <IconButton aria-label="unstar" onClick={handleStar}>
-                  <StarIcon fontSize="large"/>
-                </IconButton>
-              :
-              <IconButton aria-label="toxic" onClick={handleStar}>
-                <StarOutlineIcon fontSize="large"/>
-              </IconButton>
-              }
-            </span>
-          </div>
-          <br />
+      {/* FAVORITE selection conditional & toggle */}
+      <div className="starToggleContainer">
+        <span className="newStar">
+          { star == true ?
+            <IconButton aria-label="unstar" onClick={handleStar}>
+              <StarIcon fontSize="large"/>
+            </IconButton>
+          :
+          <IconButton aria-label="toxic" onClick={handleStar}>
+            <StarOutlineIcon fontSize="large"/>
+          </IconButton>
+          }
+        </span>
+      </div>
+      <br />
 
       {/* SUBMIT button */}
       <Button
@@ -209,6 +219,7 @@ function AddItemPage() {
       {/* <Modal  show={showModal}/> */}
 
     </div>
+}
     </ThemeProvider>
   );
 }
