@@ -102,11 +102,13 @@ function UserHome() {
       {(heap.length >0 && tagList.length >0) &&
         <div className="heap">
           {heap.map(idea => {
-            // use tag ID in current idea to find color of matching tag from store:
+            // use tag ID in current idea to find color and label of matching tag from store:
             let tagId = +`${idea.tag_id}`;
             let tag = tagList.find(item => item.id == +tagId);
             let color;
             {tag == null || tag == 0 ? color = '#fff' : color = `${tag.hex}`};
+            let tagLabel;
+            {tag == null || tag == 0 ? tagLabel = '' : tagLabel = `${tag.label}`};
             // use project ID in current idea to find title of matching project from store:
             let projId = +`${idea.project_id}`;
             let project = projects.find(item => item.id == +projId);
@@ -120,15 +122,17 @@ function UserHome() {
                   <Typography sx={{ fontSize: 18, fontWeight: 700 }} >{idea.headline}</Typography>
                   {/* <Typography >{idea.notes}</Typography> */}
                   {/* <Typography display="inline" sx={{ fontSize: 24, color: `${color}`}}>◼︎</Typography> */}
-
-                  {idea.tag_id > 1 &&
-                    <Typography display="inline" sx={{ fontSize: 24, color: `${color}`}}>◼︎</Typography>
+                  {idea.notes &&
+                    <TextSnippetIcon sx={{ fontSize: 20 }}/>
                   }
                   {idea.star &&
                     <StarIcon sx={{ fontSize: 20 }}/>
                   }
-                  {idea.notes &&
-                    <TextSnippetIcon sx={{ fontSize: 20 }}/>
+                  {idea.tag_id > 1 &&
+                    <>
+                    <Typography display="inline" sx={{ fontSize: 24, color: `${color}`}}>◼︎</Typography>
+                    <Typography display="inline" sx={{ fontSize: 14 }}>{tagLabel}</Typography>
+                    </>
                   }
                   {projTitle &&
                     <Typography sx={{ fontSize: 12 }} >{projTitle}</Typography>
