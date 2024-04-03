@@ -49,6 +49,12 @@ function Settings() {
     history.push("/tags");
   }
 
+  // Go to ProjectsPage:
+  const goProjects = (event) => {
+    event.preventDefault();
+    history.push("/projects");
+  }
+
   const label = { inputProps: { 'aria-label': 'Switch demo' } };
 
   return (
@@ -68,6 +74,14 @@ function Settings() {
         size="large"
         // startIcon={<CheckBoxIcon />}
         onClick={goTags}>MANAGE TAGS
+      </Button>
+
+      <Button
+        variant="contained"
+        color="primary"
+        size="large"
+        // startIcon={<CheckBoxIcon />}
+        onClick={goProjects}>MANAGE PROJECTS
       </Button>
 
     </div>

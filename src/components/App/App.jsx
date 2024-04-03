@@ -20,6 +20,7 @@ import EditItemPage from '../EditItemPage/EditItemPage';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
+import ProjectsPage from '../ProjectsPage/ProjectsPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import SettingsPage from '../SettingsPage/SettingsPage';
 import TagsPage from '../TagsPage/TagsPage';
@@ -66,6 +67,10 @@ function App() {
 
           <ProtectedRoute exact path="/info">
             <InfoPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/projects">
+            <ProjectsPage />
           </ProtectedRoute>
 
           <ProtectedRoute exact path="/settings">

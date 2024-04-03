@@ -46,14 +46,17 @@ const theme = createTheme({
 function UserHome() {
 
   const user = useSelector((store) => store.user);
-  const history = useHistory();
-  const dispatch = useDispatch();
   const heap = useSelector((store) => store.heap);
   const tagList = useSelector((store) => store.tags);
+  const projects = useSelector((store) => store.projects);
+
+  const history = useHistory();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER_HEAP' });
     dispatch({ type: 'FETCH_ALL_TAGS' });
+    // TO DO: fetch projects
   }, []);
 
   // Makes each view load scrolled to top
@@ -84,22 +87,7 @@ function UserHome() {
   return (
     <ThemeProvider theme={theme}>
     <div className="container">
-      <h3>User: {user.username} / ID: {user.id}</h3>
-
-{/* SHOW TAGS for CONVENIENT TESTING/REFERENCE */}
-      {/* {tagList.length >0 &&
-        <div className="heap">
-          {tagList.map(tag => {
-            return (
-              <div key={tag.id} >
-                <div className="homeListItem" >
-                  <Typography sx={{ fontWeight: 700, mt:2, color: `${tag.hex}`}}>{tag.label} {tag.hex}</Typography>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      } */}
+    <Typography sx={{ mb:3 }}>User: {user.username} / ID: {user.id}</Typography>
 
       <Button
         variant="contained"
@@ -124,7 +112,7 @@ function UserHome() {
                 <Card variant="outlined" className="homeListCard" sx={{ m:2, p:1, boxShadow: 1}} onClick={() => goToDetails(idea.id, tag.id)}>
                 {/* <div className="homeListItem" onClick={() => goToDetails(idea.id, tag.id)} > */}
                   {/* <Typography display="inline" sx={{ mr:1, fontSize: 20, color: `${color}`}}>◼︎</Typography> */}
-                  <Typography sx={{ fontSize: 20, fontWeight: 700 }} >{idea.headline}</Typography>
+                  <Typography sx={{ fontSize: 18, fontWeight: 700 }} >{idea.headline}</Typography>
                   {/* <Typography >{idea.notes}</Typography> */}
                   {/* <Typography display="inline" sx={{ fontSize: 24, color: `${color}`}}>◼︎</Typography> */}
 
