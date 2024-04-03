@@ -13,12 +13,11 @@ import CardContent from '@mui/material/CardContent';
 import grey from '@mui/material/colors/grey';
 import Button from '@mui/material/Button';
 import StarIcon from '@mui/icons-material/Star';
-import WarningIcon from '@mui/icons-material/Warning';
+import TextSnippetIcon from '@mui/icons-material/TextSnippet';
 
 // USER HOME will include:
 // Main view of entire compost heap
     // List of all item headlines, with color coding and star status
-        // OPTIONAL: possibly a single-line snippet of notes or full text?
     // filterable by tag
     // items are clickable (link to DetailsPage)
 
@@ -125,11 +124,18 @@ function UserHome() {
                 <Card variant="outlined" className="homeListCard" sx={{ m:2, p:1, boxShadow: 1}} onClick={() => goToDetails(idea.id, tag.id)}>
                 {/* <div className="homeListItem" onClick={() => goToDetails(idea.id, tag.id)} > */}
                   {/* <Typography display="inline" sx={{ mr:1, fontSize: 20, color: `${color}`}}>◼︎</Typography> */}
-                  <Typography display="inline" sx={{ fontSize: 20, fontWeight: 700 }} >{idea.headline}</Typography>
-                  <Typography >{idea.notes}</Typography>
-                  <Typography display="inline" sx={{ mr:1, fontSize: 24, color: `${color}`}}>◼︎</Typography>
+                  <Typography sx={{ fontSize: 20, fontWeight: 700 }} >{idea.headline}</Typography>
+                  {/* <Typography >{idea.notes}</Typography> */}
+                  {/* <Typography display="inline" sx={{ fontSize: 24, color: `${color}`}}>◼︎</Typography> */}
+
+                  {idea.tag_id > 1 &&
+                    <Typography display="inline" sx={{ fontSize: 24, color: `${color}`}}>◼︎</Typography>
+                  }
                   {idea.star &&
                     <StarIcon sx={{ fontSize: 20 }}/>
+                  }
+                  {idea.notes &&
+                    <TextSnippetIcon sx={{ fontSize: 20 }}/>
                   }
                 
                 {/* </div> */}
