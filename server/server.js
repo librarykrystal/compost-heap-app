@@ -12,6 +12,7 @@ const passport = require('./strategies/user.strategy');
 const userRouter = require('./routes/user.router');
 const heapRouter = require('./routes/heap.router');
 const tagRouter = require('./routes/tag.router');
+const projectRouter = require('./routes/project.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -33,6 +34,7 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/heap', heapRouter);
 app.use('/api/tag', tagRouter);
+app.use('/api/project', projectRouter);
 
 // Listen Server & Port
 app.listen(PORT, () => {

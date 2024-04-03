@@ -56,7 +56,7 @@ function UserHome() {
   useEffect(() => {
     dispatch({ type: 'FETCH_USER_HEAP' });
     dispatch({ type: 'FETCH_ALL_TAGS' });
-    // TO DO: fetch projects
+    dispatch({ type: 'FETCH_ALL_PROJECTS' });
   }, []);
 
   // Makes each view load scrolled to top
@@ -82,6 +82,7 @@ function UserHome() {
 
   console.log('HEAP:', heap);
   console.log('TAG LIST:', tagList);
+  console.log('PROJECT LIST:', projects);
 
 
   return (
