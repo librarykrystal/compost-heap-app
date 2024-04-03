@@ -102,12 +102,16 @@ function UserHome() {
       {(heap.length >0 && tagList.length >0) &&
         <div className="heap">
           {heap.map(idea => {
+            // use tag ID in current idea to find color of matching tag from store:
             let tagId = +`${idea.tag_id}`;
-            // console.log("TAG ID IN .MAP", tagId);
             let tag = tagList.find(item => item.id == +tagId);
             let color;
             {tag == null || tag == 0 ? color = '#fff' : color = `${tag.hex}`};
-            // console.log("COLOR:", color);
+            // use project ID in current idea to find title of matching project from store:
+            let projId = +`${idea.project_id}`;
+            let project = projects.find(item => item.id == +projId);
+            let projTitle;
+            {project == null || project == 0 ? projTitle = '' : projTitle = `${project.title}`}
             return (
               <div key={idea.id}>
                 <Card variant="outlined" className="homeListCard" sx={{ m:2, p:1, boxShadow: 1}} onClick={() => goToDetails(idea.id, tag.id)}>
@@ -125,6 +129,9 @@ function UserHome() {
                   }
                   {idea.notes &&
                     <TextSnippetIcon sx={{ fontSize: 20 }}/>
+                  }
+                  {projTitle &&
+                    <Typography sx={{ fontSize: 12 }} >{projTitle}</Typography>
                   }
                 
                 {/* </div> */}
