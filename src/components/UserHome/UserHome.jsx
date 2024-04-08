@@ -71,8 +71,8 @@ function UserHome() {
   }
 
   // Route to details of clicked item
-  const goToDetails = (itemId, tagId) => {
-    console.log('goToDetails CLICKED, IDs:', itemId, tagId);
+  const goToDetails = (itemId) => {
+    console.log('goToDetails CLICKED, IDs:', itemId);
     // dispatch({
     //     type: 'SET_ITEM_ID',
     //     payload: itemId
@@ -99,7 +99,8 @@ function UserHome() {
       </Button>
 
 {/* HEAP LIST */}
-      {(heap.length >0 && tagList.length >0) &&
+{/* Note: DO NOT incl projects in this conditional since it is possible for user to have NO projects */}
+      {(heap.length > 0 && tagList.length > 0 ) &&
         <div className="heap">
           {heap.map(idea => {
             // use tag ID in current idea to find color and label of matching tag from store:
@@ -109,15 +110,18 @@ function UserHome() {
             {tag == null || tag == 0 ? color = '#fff' : color = `${tag.hex}`};
             let tagLabel;
             {tag == null || tag == 0 ? tagLabel = '' : tagLabel = `${tag.label}`};
-            // use project ID in current idea to find title of matching project from store:
-            let projId = +`${idea.project_id}`;
-            let project = projects.find(item => item.id == +projId);
+            // use project ID in current idea to find title of matching project from store,
+            // using IF stmt that checks for projects to avoid rendering error when there are no projects:
             let projTitle;
-            {project == null || project == 0 ? projTitle = '' : projTitle = `${project.title}`}
+            if (projects.length > 0) {
+              let projId = +`${idea.project_id}`;
+              let project = projects.find(item => item.id == +projId);
+              {project == null || project == 0 ? projTitle = '' : projTitle = `${project.title}`}
+            }
             return (
               <div key={idea.id}>
-                <Card variant="outlined" className="homeListCard" sx={{ m:2, p:1, boxShadow: 1}} onClick={() => goToDetails(idea.id, tag.id)}>
-                {/* <div className="homeListItem" onClick={() => goToDetails(idea.id, tag.id)} > */}
+                <Card variant="outlined" className="homeListCard" sx={{ m:2, p:1, boxShadow: 1}} onClick={() => goToDetails(idea.id)}>
+                  {/* <div className="homeListItem" onClick={() => goToDetails(idea.id, tag.id)} > */}
                   {/* <Typography display="inline" sx={{ mr:1, fontSize: 20, color: `${color}`}}>◼︎</Typography> */}
                   <Typography sx={{ fontSize: 18, fontWeight: 700 }} >{idea.headline}</Typography>
                   {/* <Typography >{idea.notes}</Typography> */}
@@ -134,7 +138,7 @@ function UserHome() {
                     <Typography display="inline" sx={{ fontSize: 14 }}>{tagLabel}</Typography>
                     </>
                   }
-                  {projTitle &&
+                  {projects.length > 0 &&
                     <Typography sx={{ fontSize: 12 }} >{projTitle}</Typography>
                   }
                 

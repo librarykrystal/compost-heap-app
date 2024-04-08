@@ -101,15 +101,24 @@ function AddItemPage() {
   };
 
   // SUBMIT FORM function
-  // TO DO: ALSO needs to check project value and NOT send it along if it is 0
+  // TO DO: test out sending NULL values to columns with ref keys
   const submitForm = (e) => {
     e.preventDefault();
     // Check for headline entry, show warning (and do NOT submit) if none:
     if (!headline) {
       setNoHeadlineWarning(true);
       console.log("NO HEADLINE, NO SUBMIT");
+    } else if (tag == 0) {
+      // dispatch data WITHOUT tag, so tag defaults NULL in database
+      // set confirmation modal to show/true
+    } else if (project == 0) {
+      // dispatch data WITHOUT project, so project defaults NULL in database
+      // set confirmation modal to show/true
+    } else if (tag == 0 && project == 0) {
+      // dispatch data WITHOUT tag or project, so both default NULL in database
+      // set confirmation modal to show/true
     } else {
-      // dispatch goes here
+      // dispatch full data
       // set confirmation modal to show/true
     }
   }
