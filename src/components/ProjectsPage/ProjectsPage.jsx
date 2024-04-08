@@ -56,7 +56,7 @@ function ProjectsPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // dispatch({ type: 'FETCH_ALL_PROJECTS' });
+    dispatch({ type: 'FETCH_ALL_PROJECTS' });
   }, []);
 
   // Makes each view load scrolled to top

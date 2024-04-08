@@ -62,6 +62,7 @@ function AddItemPage() {
 
   const user = useSelector((store) => store.user);
   const tagList = useSelector((store) => store.tags);
+  const projects = useSelector((store) => store.projects);
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -69,11 +70,12 @@ function AddItemPage() {
   // State hooks for entry form
   const [headline, setHeadline] = useState('');
   const [notes, setNotes] = useState('');
-  const [tag, setTag] = useState(0);
+  const [tag, setTag] = useState(1);
+  const [project, setProject] = useState(0);
   const [star, setStar] = useState(false);
 
   // CONSOLE LOG array of all form selections as they happen:
-  console.log('SELECTIONS...', ["headline:", headline, "notes:", notes, "tag:", tag, "star:", star]);
+  console.log('SELECTIONS...', ["headline:", headline, "notes:", notes, "tag:", tag, "project:", project, "star:", star]);
 
   // State hook for warning/prompt if no headline is entered
   const [noHeadlineWarning, setNoHeadlineWarning] = useState(false);
@@ -81,8 +83,11 @@ function AddItemPage() {
   // State hook for showing confirmation modal after submit
   const [showModal, setShowModal] = useState(false);
 
+  console.log('PROJECTS:', projects);
+
   useEffect(() => {
     dispatch({ type: 'FETCH_ALL_TAGS' });
+    dispatch({ type: 'FETCH_ALL_PROJECTS' });
   }, []);
 
   // Makes each view load scrolled to top
@@ -96,6 +101,7 @@ function AddItemPage() {
   };
 
   // SUBMIT FORM function
+  // TO DO: ALSO needs to check project value and not send it along if it is 0
   const submitForm = (e) => {
     e.preventDefault();
     // Check for headline entry, show warning (and do NOT submit) if none:
@@ -119,7 +125,7 @@ function AddItemPage() {
 
   return (
     <ThemeProvider theme={theme}>
-      {tagList.length >0 &&
+      {tagList.length > 0 && projects.length > 0 &&
     <div className="container">
       <Typography sx={{ fontSize: 20, fontWeight: 700 }}>ADD NEW ITEM PAGE</Typography>
       <Typography sx={{ mb:5}}>User: {user.username} / ID: {user.id}</Typography>
@@ -133,6 +139,7 @@ function AddItemPage() {
         required
         label="Headline"
         variant="standard"
+        // defaultValue={0}
         value={headline}
         onChange={(e) => setHeadline(e.target.value)}
       />
@@ -158,13 +165,12 @@ function AddItemPage() {
             required
             labelId="tag"
             id="tag"
+            // value={tagList.length ? {tag} : 0}
             value={tag}
             label="Tag"
             onChange={(e) => setTag(e.target.value)}
           >
-          {/* First tag option is 0/NONE - DELETE IF "NONE" BECOMES A ROW IN DATABASE */}
-          <MenuItem value="0">None</MenuItem>
-          {/* mapping through user's collection of tags from database */}
+          {/* mapping through user's collection of tags from database: */}
           {tagList.map(tag => {
             return (
                 <MenuItem
@@ -172,6 +178,34 @@ function AddItemPage() {
                   value={tag.id}>
                   <Typography display="inline" sx={{ mr:1, color: `${tag.hex}`}}>◼︎</Typography>
                   <Typography display="inline" >{tag.label}</Typography>
+                </MenuItem>
+            );
+          })}
+        </Select>
+      </FormControl>
+      <br /><br />
+
+      {/* DROPDOWN input for PROJECT */}
+      <FormControl fullWidth>
+        <InputLabel id="project">Project</InputLabel>
+          <Select
+            required
+            labelId="project"
+            id="project"
+            value={project}
+            label="Project"
+            onChange={(e) => setProject(e.target.value)}
+          >
+            <MenuItem value={0}>
+              <Typography display="inline" >None</Typography>
+            </MenuItem>
+          {/* mapping through user's collection of projects from database: */}
+          {projects.map(project => {
+            return (
+                <MenuItem
+                  key={project.id}
+                  value={project.id}>
+                  <Typography display="inline" >{project.title}</Typography>
                 </MenuItem>
             );
           })}
