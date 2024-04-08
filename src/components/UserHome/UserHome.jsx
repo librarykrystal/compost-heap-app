@@ -128,7 +128,7 @@ function UserHome() {
                   {idea.star &&
                     <StarIcon sx={{ fontSize: 20 }}/>
                   }
-                  {idea.tag_id > 1 &&
+                  {idea.tag_id > 0 &&
                     <>
                     <Typography display="inline" sx={{ fontSize: 24, color: `${color}`}}>◼︎</Typography>
                     <Typography display="inline" sx={{ fontSize: 14 }}>{tagLabel}</Typography>

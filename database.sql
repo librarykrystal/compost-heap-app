@@ -45,15 +45,14 @@ CREATE TABLE "idea" (
 -- New accounts will eventually auto-POST this set of starter tags upon account creation.
 INSERT INTO "tag" ("label", "user_id", "hex")
 VALUES
-('None', 1, '#FFFFFF'), -- 1
-('Setting', 1, '#FB8A4E'),  -- 2
-('Physical Trait', 1, '#61AE51'),  -- 3
-('Personality Trait', 1, '#D44A96'),  -- 4
-('Internal Conflict', 1, '#8F4ED9'),  -- 5
-('External Conflict', 1, '#FFD05E'),  -- 6
-('Dialogue', 1, '#2274E0'),  -- 7
-('Event', 1, '#FF5C63'),  -- 8
-('Martian Pets', 1, '#00BAA8');  -- 9
+('Setting', 1, '#FB8A4E'),  -- 1
+('Physical Trait', 1, '#61AE51'),  -- 2
+('Personality Trait', 1, '#D44A96'),  -- 3
+('Internal Conflict', 1, '#8F4ED9'),  -- 4
+('External Conflict', 1, '#FFD05E'),  -- 5
+('Dialogue', 1, '#2274E0'),  -- 6
+('Event', 1, '#FF5C63'),  -- 7
+('Martian Pets', 1, '#00BAA8');  -- 8
 
 --- [ OPTIONAL STARTER PROJECTS for testing ] --- insert after registering an account with ID of 1
 INSERT INTO "project" ("user_id", "title", "type", "genre", "notes")
@@ -66,12 +65,12 @@ VALUES
 --- [ OPTIONAL STARTER IDEAS for testing] --- insert after registering an account with ID of 1
 INSERT INTO "idea" ("user_id", "headline", "notes", "tag_id", "project_id", "star")
 VALUES
-(1, 'Pretzel octopus sculpture', 'suction cups are big pieces of salt', 2, null, true),
-(1, 'Silver nail polish', 'homage to The Big Sleep', 3, 4, false),
-(1, 'Useful clumsiness', 'character has accidents that are helpful or used for comedic effect', 4, 1, false),
-(1, 'Real self or invented persona?', 'character feels themselves disappearing into their contrived public persona, finds it distressing', 5, null, false),
-(1, 'Unwanted nomination', 'character B nominates character A for position that would expose crimes of char A', 6, 4, false),
-(1, 'He looks at me as though I look like him', 'said by someone in love', 7, 2, true),
-(1, 'Reveal character is a ghost', 'maybe they walk through a wall to prove it', 8, null, false),
-(1, 'Martian cats have two noses', 'boop is done with peace sign hand', 9, 3, true),
-(1, 'Martian dogs have two tails', 'if feeling meh, only one wags', 9, 3, false);
+(1, 'Pretzel octopus sculpture', 'suction cups are big pieces of salt', 1, null, true),
+(1, 'Silver nail polish', 'homage to The Big Sleep', 2, 4, false),
+(1, 'Useful clumsiness', 'character has accidents that are helpful or used for comedic effect', 3, 1, false),
+(1, 'Real self or invented persona?', 'character feels themselves disappearing into their contrived public persona, finds it distressing', 4, null, false),
+(1, 'Unwanted nomination', 'character B nominates character A for position that would expose crimes of char A', 5, 4, false),
+(1, 'He looks at me as though I look like him', 'said by someone in love', 6, 2, true),
+(1, 'Reveal character is a ghost', 'maybe they walk through a wall to prove it', 7, null, false),
+(1, 'Martian cats have two noses', 'boop is done with peace sign hand', 8, 3, true),
+(1, 'Martian dogs have two tails', 'if feeling meh, only one wags', 8, 3, false);

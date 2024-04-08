@@ -70,7 +70,7 @@ function AddItemPage() {
   // State hooks for entry form
   const [headline, setHeadline] = useState('');
   const [notes, setNotes] = useState('');
-  const [tag, setTag] = useState(1);
+  const [tag, setTag] = useState(0);
   const [project, setProject] = useState(0);
   const [star, setStar] = useState(false);
 
@@ -101,7 +101,7 @@ function AddItemPage() {
   };
 
   // SUBMIT FORM function
-  // TO DO: ALSO needs to check project value and not send it along if it is 0
+  // TO DO: ALSO needs to check project value and NOT send it along if it is 0
   const submitForm = (e) => {
     e.preventDefault();
     // Check for headline entry, show warning (and do NOT submit) if none:
@@ -170,6 +170,9 @@ function AddItemPage() {
             label="Tag"
             onChange={(e) => setTag(e.target.value)}
           >
+            <MenuItem value={0}>
+              <Typography display="inline" >None</Typography>
+            </MenuItem>
           {/* mapping through user's collection of tags from database: */}
           {tagList.map(tag => {
             return (
