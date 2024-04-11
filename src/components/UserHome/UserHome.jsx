@@ -80,9 +80,9 @@ function UserHome() {
     history.push(`/details/${itemId}`);
   }
 
-  console.log('HEAP:', heap);
-  console.log('TAG LIST:', tagList);
-  console.log('PROJECT LIST:', projects);
+  // console.log('HEAP:', heap);
+  // console.log('TAG LIST:', tagList);
+  // console.log('PROJECT LIST:', projects);
 
 
   return (
@@ -98,20 +98,20 @@ function UserHome() {
         onClick={goNew}>ADD NEW IDEA
       </Button>
 
-{/* HEAP LIST */}
-{/* Note: DO NOT incl projects in this conditional since it is possible for user to have NO projects */}
-      {(heap.length > 0 && tagList.length > 0 ) &&
+      {/* HEAP LIST */}
+      {( heap.length > 0 ) &&
         <div className="heap">
           {heap.map(idea => {
-            // use tag ID in current idea to find color and label of matching tag from store:
-            let tagId = +`${idea.tag_id}`;
-            let tag = tagList.find(item => item.id == +tagId);
-            let color;
-            {tag == null || tag == 0 ? color = '#fff' : color = `${tag.hex}`};
+            // use tag ID within current idea to find match in tagList and define label & color:
             let tagLabel;
-            {tag == null || tag == 0 ? tagLabel = '' : tagLabel = `${tag.label}`};
-            // use project ID in current idea to find title of matching project from store,
-            // using IF stmt that checks for projects to avoid rendering error when there are no projects:
+            let color;
+            if (tagList.length > 0) {
+              let tagId = +`${idea.tag_id}`;
+              let tag = tagList.find(item => item.id == +tagId);
+              {tag == null || tag == 0 ? tagLabel = '' : tagLabel = `${tag.label}`};
+              {tag == null || tag == 0 ? color = '#fff' : color = `${tag.hex}`};
+            }
+            // use project ID within current idea to find match in projects and define project title:
             let projTitle;
             if (projects.length > 0) {
               let projId = +`${idea.project_id}`;
