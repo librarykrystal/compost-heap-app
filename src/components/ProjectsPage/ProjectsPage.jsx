@@ -78,27 +78,21 @@ function ProjectsPage() {
       <Typography sx={{ fontSize: 28, fontWeight: 700 }}>Projects page</Typography>
       <Typography sx={{ mb:3 }}>User: {user.username} / ID: {user.id}</Typography>
 
-      
-
-      {/* List of TAGS for current user */}
-      {projects ?
+      {/* List of PROJECTS for current user */}
+      {projects.length >0 &&
         <div className="tagList">
-          {/* {tagList.map(tag => {
+          {projects.map(project => {
             return (
-              <div key={tag.id} >
+              <div key={project.id} >
                 <div className="homeListItem" >
                 <Stack spacing={2} direction="row" sx={{ mb: 2, mt: 2 }} alignItems="center">
-                  <EditIcon sx={{ fontSize: 28 }} color="primary" className="editIcon" />
-                  <Typography sx={{ fontWeight: 700, mt:2, color: `${tag.hex}`}}>{tag.id} {tag.label} {tag.hex}</Typography>
+                  {/* <EditIcon sx={{ fontSize: 28 }} color="primary" className="editIcon" /> */}
+                  <Typography sx={{ fontWeight: 700, mt:2 }}>{project.id} {project.title}</Typography>
                   </Stack>
                 </div>
               </div>
             );
-          })} */}
-        </div>
-        :
-        <div>
-          <Typography sx={{ fontSize: 28, fontWeight: 700 }}>You have no projects!</Typography>
+          })}
         </div>
       }
       <AddBoxIcon sx={{ fontSize: 42 }} color="secondary" className="editIcon" />
