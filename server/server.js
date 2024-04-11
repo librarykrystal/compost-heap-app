@@ -10,7 +10,7 @@ const passport = require('./strategies/user.strategy');
 
 // Route Includes
 const userRouter = require('./routes/user.router');
-const heapRouter = require('./routes/heap.router');
+const ideaRouter = require('./routes/idea.router');
 const tagRouter = require('./routes/tag.router');
 const projectRouter = require('./routes/project.router');
 
@@ -32,7 +32,7 @@ app.use(passport.session());
 
 // Routes
 app.use('/api/user', userRouter);
-app.use('/api/heap', heapRouter);
+app.use('/api/idea', ideaRouter);
 app.use('/api/tag', tagRouter);
 app.use('/api/project', projectRouter);
 

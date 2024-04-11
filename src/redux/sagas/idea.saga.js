@@ -11,7 +11,7 @@ function* heapSaga() {
 function* fetchEm(action) {
   console.log('Heap GET ALL worker SAGA');
   try {
-    const heap = yield axios.get('/api/heap');
+    const heap = yield axios.get('/api/idea');
     console.log('get all result:', heap.data);
     yield put({ type: 'SET_HEAP', payload: heap.data });
   } catch (error) {
@@ -23,7 +23,7 @@ function* fetchEm(action) {
 function* fetchIt(action) {
   console.log('fetchIt action:', action);
   try {
-      const item = yield axios.get(`/api/heap/${action.payload}`);
+      const item = yield axios.get(`/api/idea/${action.payload}`);
       console.log('GET IDEA result:', item.data);
       yield put({ type: 'SET_IDEA', payload: item.data[0] });
   } catch (error) {
