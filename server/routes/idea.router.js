@@ -45,6 +45,37 @@ router.get('/:id', (req, res) => {
   }
   });
 
-
+// POST NEW IDEA
+router.post('/', (req, res) => {
+  console.log('idea POST route');
+  console.log('is authenticated?', req.isAuthenticated());
+  console.log('user', req.user);
+  console.log('REQ.BODY for IDEA ADD:', req.body);
+  // only do POST if authenticated:
+  if (req.isAuthenticated()){
+    const addQuery = `
+    INSERT INTO "idea" ("user_id", "headline", "notes", "tag", "project", "star")
+    VALUES ($1, $2, $3, $4, $5, $6)
+    RETURNING "id";
+    `
+    pool.query(addQuery, [
+      req.user.id,
+      req.body.headline,
+      req.body.notes,
+      req.body.tag,
+      req.body.project,
+      req.body.star
+    ])
+    .then(result => {
+      console.log('New idea ID:', result.rows[0].id);
+      res.send({ id: result.rows[0].id });
+    }).catch(err => {
+      console.log('POST ERROR:', err);
+      res.sendStatus(500)
+    })
+  } else {
+    res.sendStatus(403);
+  }
+});
 
 module.exports = router;
