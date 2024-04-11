@@ -78,7 +78,7 @@ function AddItemPage() {
   console.log('SELECTIONS...', ["headline:", headline, "notes:", notes, "tag:", tag, "project:", project, "star:", star]);
 
   // State hook for warning/prompt if no headline is entered
-  const [noHeadlineWarning, setNoHeadlineWarning] = useState(false);
+  const [headlineWarning, setHeadlineWarning] = useState(false);
 
   // State hook for showing confirmation modal after submit
   const [showModal, setShowModal] = useState(false);
@@ -104,22 +104,37 @@ function AddItemPage() {
   // TO DO: test out sending NULL values to columns with ref keys
   const submitForm = (e) => {
     e.preventDefault();
-    // Check for headline entry, show warning (and do NOT submit) if none:
+    // Check for headline entry, show warning (and do NOT submit) if no headline was entered:
     if (!headline) {
-      setNoHeadlineWarning(true);
+      setHeadlineWarning(true);
       console.log("NO HEADLINE, NO SUBMIT");
     } else if (tag == 0) {
-      // dispatch data WITHOUT tag, so tag defaults NULL in database
-      // set confirmation modal to show/true
+      // Dispatch data WITHOUT tag (which defaults to NULL in database)
+      dispatch({ 
+        type: 'ADD_IDEA',
+        payload: {headline, notes, project, star}
+    });
+      // TO DO: set confirmation modal to show/true
     } else if (project == 0) {
-      // dispatch data WITHOUT project, so project defaults NULL in database
-      // set confirmation modal to show/true
+      // Dispatch data WITHOUT project (which defaults to NULL in database)
+      dispatch({ 
+        type: 'ADD_IDEA',
+        payload: {headline, notes, tag, star}
+    });
+      // TO DO: set confirmation modal to show/true
     } else if (tag == 0 && project == 0) {
-      // dispatch data WITHOUT tag or project, so both default NULL in database
-      // set confirmation modal to show/true
+      // Dispatch data WITHOUT tag or project (both of which default to NULL in database)
+      dispatch({ 
+        type: 'ADD_IDEA',
+        payload: {headline, notes, star}
+    });
+      // TO DO: set confirmation modal to show/true
     } else {
-      // dispatch full data
-      // set confirmation modal to show/true
+      dispatch({ 
+        type: 'ADD_IDEA',
+        payload: {headline, notes, tag, project, star}
+    });
+      // TO DO: set confirmation modal to show/true
     }
   }
 
