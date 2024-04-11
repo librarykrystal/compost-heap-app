@@ -77,18 +77,24 @@ function ItemPage() {
       <div className="container">
         <Typography sx={{ fontSize: 28, fontWeight: 700 }}>Item details page</Typography>
         <Typography sx={{ mb:3 }}>User: {user.username} / ID: {user.id}</Typography>
-        {/* below conditional checks for store objects' content before rendering */}
-        { Object.keys(idea).length > 0 && Object.keys(tag).length > 0 ?
+        {/* below conditional checks for store idea content before rendering */}
+        { Object.keys(idea).length > 0 ?
           <>
             <Typography sx={{ fontSize: 22, fontWeight: 700, mt:3 }} >{idea.headline}</Typography>
             
+            {Object.keys(tag).length > 0 ?
             <Stack direction="row" sx={{ mt: 2 }} alignItems="center">
               <Typography sx={{ mr:1, color: `${tag.tag_hex}`}}>◼︎</Typography>
               <Typography>{tag.tag_label}</Typography>
               <Typography sx={{ ml:1, color: `${tag.tag_hex}`}}>◼︎</Typography>
             </Stack>
-            {/* TO DO: change above line to another conditional considering NO TAG situations */}
-            {/* if there is no tag, show a button to add one */}
+            :
+            <>
+            <Typography>NO TAG. HOW SAD.</Typography>
+            {/* OPTIONAL IDEA: if there is no tag, show a button to add one */}
+            </>
+            }
+            
             {idea.star &&
               <StarIcon />
             }

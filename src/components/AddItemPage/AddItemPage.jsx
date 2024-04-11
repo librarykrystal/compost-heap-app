@@ -108,14 +108,14 @@ function AddItemPage() {
     if (!headline) {
       setHeadlineWarning(true);
       console.log("NO HEADLINE, NO SUBMIT");
-    } else if (tag == 0) {
+    } else if (tag == 0 && project != 0) {
       // Dispatch data WITHOUT tag (which defaults to NULL in database)
       dispatch({ 
         type: 'ADD_IDEA',
         payload: {headline, notes, project, star}
     });
       // TO DO: set confirmation modal to show/true
-    } else if (project == 0) {
+    } else if (project == 0 && tag != 0) {
       // Dispatch data WITHOUT project (which defaults to NULL in database)
       dispatch({ 
         type: 'ADD_IDEA',
