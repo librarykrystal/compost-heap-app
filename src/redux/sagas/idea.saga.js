@@ -2,9 +2,10 @@ import axios from 'axios';
 import { put, takeEvery, takeLatest } from 'redux-saga/effects';
 
 // WATCHER SAGA
-function* heapSaga() {
+function* ideaSaga() {
   yield takeLatest('FETCH_USER_HEAP', fetchEm);
   yield takeLatest('FETCH_IDEA', fetchIt);
+  yield takeEvery('ADD_IDEA', addIt);
 }
 
 // WORKER SAGA for GET ALL
@@ -31,5 +32,17 @@ function* fetchIt(action) {
   }
 }
 
+// WORKER SAGA for ADD IDEA
+function* addIt(action) {
+  console.log('POST action:', action.payload);
+  try {
+    const newIdea = yield axios.post('/api/idea', action.payload);
+    console.log('POST SAGA SUCCESS:', newIdea.data.id);
+    yield fetchIt({type: 'FETCH_IDEA', payload: newItem.data.id });
+  } catch (error) {
+  console.log('ERROR ADDING IDEA:', error);
+}
+}
 
-export default heapSaga;
+
+export default ideaSaga;

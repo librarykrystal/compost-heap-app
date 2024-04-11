@@ -51,7 +51,7 @@ function ItemPage() {
   const history = useHistory();
   const dispatch = useDispatch();
   const tag = useSelector((store) => store.tag);
-  const idea = useSelector((store) => store.item);
+  const idea = useSelector((store) => store.idea);
   const { id } = useParams();
 
   useEffect(() => {
@@ -65,6 +65,7 @@ function ItemPage() {
   }, []);
 
   console.log("TAG DATA:", tag);
+  // console.log("PROJECT DATA:", project);
 
   const goEdit = (e) => {
     e.preventDefault();
