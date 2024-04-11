@@ -54,7 +54,7 @@ router.post('/', (req, res) => {
   // only do POST if authenticated:
   if (req.isAuthenticated()){
     const addQuery = `
-    INSERT INTO "idea" ("user_id", "headline", "notes", "tag", "project", "star")
+    INSERT INTO "idea" ("user_id", "headline", "notes", "tag_id", "project_id", "star")
     VALUES ($1, $2, $3, $4, $5, $6)
     RETURNING "id";
     `

@@ -38,7 +38,7 @@ function* addIt(action) {
   try {
     const newIdea = yield axios.post('/api/idea', action.payload);
     console.log('POST SAGA SUCCESS:', newIdea.data.id);
-    yield fetchIt({type: 'FETCH_IDEA', payload: newItem.data.id });
+    yield fetchIt({type: 'FETCH_IDEA', payload: newIdea.data.id });
   } catch (error) {
   console.log('ERROR ADDING IDEA:', error);
 }
