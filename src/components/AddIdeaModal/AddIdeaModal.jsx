@@ -76,7 +76,7 @@ function Modal(props) {
                 <Typography variant="h5" mt={1} mb={1} gutterBottom >Success!</Typography>
               </div>
               <div className="modal-body">
-                <Typography variant="body1" mt={2} mb={2} gutterBottom>The new item has been added to your inventory.</Typography>
+                <Typography variant="body1" mt={2} mb={2} gutterBottom>Your new idea has been added.</Typography>
               </div>
               <div className="modal-footer">
 

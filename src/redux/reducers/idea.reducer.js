@@ -1,4 +1,4 @@
-const itemReducer = (state = {}, action) => {
+const ideaReducer = (state = {}, action) => {
   switch (action.type) {
     case 'SET_IDEA':
       return action.payload;
@@ -9,4 +9,4 @@ const itemReducer = (state = {}, action) => {
   }
 };
 
-export default itemReducer;
+export default ideaReducer;

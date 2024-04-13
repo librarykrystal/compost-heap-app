@@ -71,13 +71,9 @@ function UserHome() {
   }
 
   // Route to details of clicked item
-  const goToDetails = (itemId) => {
-    console.log('goToDetails CLICKED, IDs:', itemId);
-    // dispatch({
-    //     type: 'SET_ITEM_ID',
-    //     payload: itemId
-    //   });
-    history.push(`/details/${itemId}`);
+  const goToDetails = (ideaId) => {
+    // console.log('goToDetails CLICKED, IDs:', ideaId);
+    history.push(`/details/${ideaId}`);
   }
 
   // console.log('HEAP:', heap);
