@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {useHistory} from 'react-router-dom';
 // import { HexColorPicker } from "react-colorful";
 
-// import Modal from '../NewIdeaModal/NewIdeaModal';
+import Modal from '../AddIdeaModal/AddIdeaModal';
 
 // Material UI Imports
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -114,27 +114,27 @@ function AddItemPage() {
         type: 'ADD_IDEA',
         payload: {headline, notes, project, star}
     });
-      // TO DO: set confirmation modal to show/true
+      setShowModal(true);
     } else if (project == 0 && tag != 0) {
       // Dispatch data WITHOUT project (which defaults to NULL in database)
       dispatch({ 
         type: 'ADD_IDEA',
         payload: {headline, notes, tag, star}
     });
-      // TO DO: set confirmation modal to show/true
+      setShowModal(true);
     } else if (tag == 0 && project == 0) {
       // Dispatch data WITHOUT tag or project (both of which default to NULL in database)
       dispatch({ 
         type: 'ADD_IDEA',
         payload: {headline, notes, star}
     });
-      // TO DO: set confirmation modal to show/true
+      setShowModal(true);
     } else {
       dispatch({ 
         type: 'ADD_IDEA',
         payload: {headline, notes, tag, project, star}
     });
-      // TO DO: set confirmation modal to show/true
+      setShowModal(true);
     }
   }
 
@@ -278,7 +278,7 @@ function AddItemPage() {
       </div>
 
       {/* MODAL — shows when submit button is clicked */}
-      {/* <Modal  show={showModal}/> */}
+      <Modal  show={showModal}/>
 
     </div>
 }
