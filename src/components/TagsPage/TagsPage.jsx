@@ -10,6 +10,7 @@ import '@fontsource/cabin/700.css';
 import '@fontsource/libre-baskerville';
 import grey from '@mui/material/colors/grey';
 import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
 import Switch from '@mui/material/Switch';
 import AddBoxIcon from '@mui/icons-material/AddBox';
@@ -66,6 +67,16 @@ function TagsPage() {
     window.scrollTo(0, 0)
   }, []);
 
+  // Route to details of clicked item
+  const goEdit = (tagId) => {
+    console.log('goEdit CLICKED, ID:', tagId);
+    // history.push(`/tag/${tagId}`);
+  }
+
+  const goNew = () => {
+    console.log('goNew CLICKED');
+  }
+
   // Go to SettingsPage (cancel) without submitting and changes:
   const goSettingsCancel = (event) => {
     event.preventDefault();
@@ -80,20 +91,23 @@ function TagsPage() {
       <h2>Tags page</h2>
       <p>User: {user.username} / ID: {user.id}</p>
 
-      
-
       {/* List of TAGS for current user */}
       {tagList.length >0 &&
         <div className="tagList">
           {tagList.map(tag => {
             return (
               <div key={tag.id} >
-                <div className="homeListItem" >
-                <Stack spacing={2} direction="row" sx={{ mb: 2, mt: 2 }} alignItems="center">
-                  {/* <EditIcon sx={{ fontSize: 28 }} color="primary" className="editIcon" /> */}
-                  <Typography sx={{ fontWeight: 700, mt:2, color: `${tag.hex}`}}>{tag.id} {tag.label} {tag.hex}</Typography>
+                <Card
+                  variant="outlined"
+                  className="tagListCard"
+                  sx={{ m:2, pl:2, pr:3, boxShadow: 1}}
+                  onClick={() => goEdit(tag.id)}
+                >
+                  <Stack spacing={1.5} direction="row" sx={{ mb: .5, mt: .5 }} alignItems="center">
+                    <Typography display="inline" sx={{ fontSize: 24, color: `${tag.hex}`}}>◼︎</Typography>
+                    <Typography sx={{ fontWeight: 700, mt:2}}>{tag.label}</Typography>
                   </Stack>
-                </div>
+                </Card>
               </div>
             );
           })}
@@ -101,6 +115,15 @@ function TagsPage() {
       }
       <AddBoxIcon sx={{ fontSize: 42 }} color="secondary" className="editIcon" />
       <br /><br />
+
+      <Button
+        variant="contained"
+        color="primary"
+        size="large"
+        // startIcon={<CheckBoxIcon />}
+        onClick={goNew}>ADD NEW TAG
+      </Button>
+      <br />
 
       <Button
         variant="contained"
