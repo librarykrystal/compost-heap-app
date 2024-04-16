@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import {useHistory} from 'react-router-dom';
-// import { HexColorPicker } from "react-colorful";
+import { HexColorPicker } from "react-colorful";
 
 // import Modal once created
 
@@ -11,6 +11,7 @@ import Typography from '@mui/material/Typography';
 import '@fontsource/cabin/400.css';
 import '@fontsource/cabin/700.css';
 import '@fontsource/libre-baskerville';
+import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import grey from '@mui/material/colors/grey';
 import Button from '@mui/material/Button';
@@ -116,10 +117,11 @@ function AddItemPage() {
       />
       <br /><br />
 
-
-      {/* COLOR PICKER WILL GO HERE */}
-
-
+      {/* COLOR PICKER */}
+      <Box sx={{ mb:2 }}>
+        <HexColorPicker className="colorPicker" color={color} onChange={(e) => setColor(e)} />
+      </Box>
+      
       {/* SUBMIT button */}
       <Button
         type="submit"
@@ -142,7 +144,7 @@ function AddItemPage() {
       </div>
 
       {/* MODAL — shows when submit button is clicked */}
-      <Modal  show={showModal}/>
+      {/* <Modal  show={showModal}/> */}
 
     </div>
     </ThemeProvider>
