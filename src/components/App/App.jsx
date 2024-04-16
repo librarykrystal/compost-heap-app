@@ -15,6 +15,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
 import AddItemPage from '../AddItemPage/AddItemPage';
+import AddTagPage from '../AddTagPage/AddTagPage';
 import DetailsPage from '../DetailsPage/DetailsPage';
 import EditItemPage from '../EditItemPage/EditItemPage';
 import InfoPage from '../InfoPage/InfoPage';
@@ -79,6 +80,10 @@ function App() {
 
           <ProtectedRoute exact path="/tags">
             <TagsPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/newtag">
+            <AddTagPage />
           </ProtectedRoute>
 
           <Route exact path="/login">
