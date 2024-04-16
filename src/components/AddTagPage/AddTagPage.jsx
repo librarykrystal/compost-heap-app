@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import {useHistory} from 'react-router-dom';
-import { HexColorPicker } from "react-colorful";
+// import { HexColorPicker } from "react-colorful";
+import { CirclePicker } from 'react-color'
 
 // import Modal once created
 
@@ -44,7 +45,7 @@ const theme = createTheme({
 });
 
 
-function AddItemPage() {
+function AddTagPage() {
 
   const user = useSelector((store) => store.user);
 
@@ -110,7 +111,7 @@ function AddItemPage() {
         fullWidth
         id="label"
         required
-        label="Label"
+        label="Tag Name"
         variant="standard"
         value={label}
         onChange={(e) => setLabel(e.target.value)}
@@ -118,10 +119,11 @@ function AddItemPage() {
       <br /><br />
 
       {/* COLOR PICKER */}
-      <Box sx={{ mb:2 }}>
-        <HexColorPicker className="colorPicker" color={color} onChange={(e) => setColor(e)} />
+      <Box sx={{ mb:4 }}>
+        {/* <HexColorPicker className="colorPicker" color={color} onChange={(e) => setColor(e)} /> */}
+        <CirclePicker className="colorPicker" color={color} onChange={(e) => setColor(e)} />
       </Box>
-      
+
       {/* SUBMIT button */}
       <Button
         type="submit"
@@ -151,4 +153,4 @@ function AddItemPage() {
   );
 }
 
-export default AddItemPage;
+export default AddTagPage;
