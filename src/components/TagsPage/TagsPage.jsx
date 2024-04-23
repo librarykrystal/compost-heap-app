@@ -77,7 +77,11 @@ function TagsPage() {
     console.log('goNew CLICKED');
   }
 
-  // Go to SettingsPage (cancel) without submitting and changes:
+  const goNewTag = (event) => {
+    event.preventDefault();
+    history.push("/newtag");
+  }
+
   const goSettingsCancel = (event) => {
     event.preventDefault();
     history.push("/settings");
@@ -121,7 +125,7 @@ function TagsPage() {
         color="primary"
         size="large"
         // startIcon={<CheckBoxIcon />}
-        onClick={goNew}>ADD NEW TAG
+        onClick={goNewTag}>ADD NEW TAG
       </Button>
       <br />
 
