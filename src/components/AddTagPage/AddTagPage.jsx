@@ -66,7 +66,9 @@ function AddTagPage() {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    // should there be a dispatch to CLEAR TAG upon mount just in case?
+    dispatch({ 
+      type: 'CLEAR_TAG'
+    });
   }, []);
 
   // Makes each view load scrolled to top
