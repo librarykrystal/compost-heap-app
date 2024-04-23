@@ -49,4 +49,35 @@ router.get('/:id', (req, res) => {
 });
 
 
+// POST NEW TAG
+router.post('/', (req, res) => {
+  console.log('tag POST route');
+  console.log('is authenticated?', req.isAuthenticated());
+  console.log('user', req.user);
+  console.log('REQ.BODY for TAG ADD:', req.body);
+  // only do POST if authenticated:
+  if (req.isAuthenticated()){
+    const addQuery = `
+    INSERT INTO "tag" ("user_id", "label", "hex")
+    VALUES ($1, $2, $3)
+    RETURNING "id";
+    `
+    pool.query(addQuery, [
+      req.user.id,
+      req.body.label,
+      req.body.hex
+    ])
+    .then(result => {
+      console.log('New tag ID:', result.rows[0].id);
+      res.send({ id: result.rows[0].id });
+    }).catch(err => {
+      console.log('TAG POST ERROR:', err);
+      res.sendStatus(500)
+    })
+  } else {
+    res.sendStatus(403);
+  }
+});
+
+
 module.exports = router;
