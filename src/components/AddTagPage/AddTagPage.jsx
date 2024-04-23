@@ -91,6 +91,10 @@ function AddTagPage() {
     }
   }
 
+  const hexIt = (colorObj) => {
+    setColor(colorObj.hex);
+  }
+
   // Go back home without submitting anything:
   const goBack = (event) => {
     event.preventDefault();
@@ -121,7 +125,7 @@ function AddTagPage() {
       {/* COLOR PICKER */}
       <Box sx={{ mb:4 }}>
         {/* <HexColorPicker className="colorPicker" color={color} onChange={(e) => setColor(e)} /> */}
-        <CirclePicker className="colorPicker" color={color} onChange={(e) => setColor(e)} />
+        <CirclePicker className="colorPicker" color={color} onChange={(e) => hexIt(e)} />
       </Box>
 
       {/* SUBMIT button */}
