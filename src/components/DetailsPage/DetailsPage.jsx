@@ -56,7 +56,7 @@ function ItemPage() {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_IDEA', payload: id });
-    dispatch({ type: 'FETCH_TAG', payload: id });
+    dispatch({ type: 'FETCH_TAG_FOR_IDEA', payload: id });
   }, []);
 
   // Makes each view load scrolled to top

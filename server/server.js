@@ -12,6 +12,7 @@ const passport = require('./strategies/user.strategy');
 const userRouter = require('./routes/user.router');
 const ideaRouter = require('./routes/idea.router');
 const tagRouter = require('./routes/tag.router');
+const tagByIdeaRouter = require('./routes/tag.of.idea.router')
 const projectRouter = require('./routes/project.router');
 
 // Body parser middleware
@@ -34,6 +35,7 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/idea', ideaRouter);
 app.use('/api/tag', tagRouter);
+app.use('/api/tagbyidea', tagByIdeaRouter);
 app.use('/api/project', projectRouter);
 
 // Listen Server & Port

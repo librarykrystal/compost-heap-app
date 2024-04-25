@@ -24,7 +24,7 @@ function* fetchEm(action) {
 function* fetchItbyIdeaId(action) {
   // console.log('Tags GET ALL worker SAGA');
   try {
-    const tag = yield axios.get(`/api/tag/${action.payload}`);
+    const tag = yield axios.get(`/api/tagbyidea/${action.payload}`);
     console.log('get ONE TAG payload:', action.payload);
     console.log('get ONE TAG SAGA result:', tag.data);
     yield put({ type: 'SET_TAG', payload: tag.data });
