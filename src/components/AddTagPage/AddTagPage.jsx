@@ -54,10 +54,10 @@ function AddTagPage() {
 
   // State hooks for entry form
   const [label, setLabel] = useState('');
-  const [color, setColor] = useState('#fff');
+  const [hex, setHex] = useState('#fff');
 
   // CONSOLE LOG array of all form selections as they happen:
-  console.log('SELECTIONS...', ["label:", label, "color:", color]);
+  console.log('SELECTIONS...', ["label:", label, "color:", hex]);
 
   // State hook for warning/prompt if no label is entered
   const [labelWarning, setLabelWarning] = useState(false);
@@ -87,14 +87,14 @@ function AddTagPage() {
     } else {
       dispatch({ 
         type: 'ADD_TAG',
-        payload: {label, color}
+        payload: {label, hex}
     });
       setShowModal(true);
     }
   }
 
   const hexIt = (colorObj) => {
-    setColor(colorObj.hex);
+    setHex(colorObj.hex);
   }
 
   // Go back home without submitting anything:
@@ -127,7 +127,7 @@ function AddTagPage() {
       {/* COLOR PICKER */}
       <Box sx={{ mb:4 }}>
         {/* <HexColorPicker className="colorPicker" color={color} onChange={(e) => setColor(e)} /> */}
-        <CirclePicker className="colorPicker" color={color} onChange={(e) => hexIt(e)} />
+        <CirclePicker className="colorPicker" color={hex} onChange={(e) => hexIt(e)} />
       </Box>
 
       {/* SUBMIT button */}
