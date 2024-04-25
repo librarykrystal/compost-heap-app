@@ -11,7 +11,7 @@ import {useSelector} from 'react-redux';
 // Button to return to item page
 // Button to return to home
 
-function EditPage() {
+function EditIdeaPage() {
   const user = useSelector((store) => store.user);
   return (
     <div className="container">
@@ -22,4 +22,4 @@ function EditPage() {
   );
 }
 
-export default EditPage;
+export default EditIdeaPage;

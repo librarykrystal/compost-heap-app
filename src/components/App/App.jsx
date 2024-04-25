@@ -17,7 +17,8 @@ import AboutPage from '../AboutPage/AboutPage';
 import AddItemPage from '../AddItemPage/AddItemPage';
 import AddTagPage from '../AddTagPage/AddTagPage';
 import DetailsPage from '../DetailsPage/DetailsPage';
-import EditItemPage from '../EditItemPage/EditItemPage';
+import EditIdeaPage from '../EditIdeaPage/EditIdeaPage';
+import EditTagPage from '../EditTagPage/EditTagPage';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
@@ -62,8 +63,12 @@ function App() {
             <DetailsPage />
           </ProtectedRoute>
 
-          <ProtectedRoute exact path="/edit">
-            <EditItemPage />
+          <ProtectedRoute exact path="/editidea">
+            <EditIdeaPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/edittag">
+            <EditTagPage />
           </ProtectedRoute>
 
           <ProtectedRoute exact path="/info">
