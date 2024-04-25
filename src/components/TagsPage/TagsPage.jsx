@@ -70,7 +70,7 @@ function TagsPage() {
   // Route to details of clicked item
   const goEdit = (tagId) => {
     console.log('goEdit CLICKED, ID:', tagId);
-    // history.push(`/tag/${tagId}`);
+    history.push(`/edittag/${tagId}`);
   }
 
   const goNew = () => {

@@ -63,11 +63,11 @@ function App() {
             <DetailsPage />
           </ProtectedRoute>
 
-          <ProtectedRoute exact path="/editidea">
+          <ProtectedRoute exact path="/editidea/:id">
             <EditIdeaPage />
           </ProtectedRoute>
 
-          <ProtectedRoute exact path="/edittag">
+          <ProtectedRoute exact path="/edittag/:id">
             <EditTagPage />
           </ProtectedRoute>
 
