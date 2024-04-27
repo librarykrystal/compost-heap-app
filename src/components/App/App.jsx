@@ -15,6 +15,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
 import AddItemPage from '../AddItemPage/AddItemPage';
+import AddProjectPage from '../AddProjectPage/AddProjectPage';
 import AddTagPage from '../AddTagPage/AddTagPage';
 import DetailsPage from '../DetailsPage/DetailsPage';
 import EditIdeaPage from '../EditIdeaPage/EditIdeaPage';
@@ -77,6 +78,10 @@ function App() {
 
           <ProtectedRoute exact path="/projects">
             <ProjectsPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/newproject">
+            <AddProjectPage />
           </ProtectedRoute>
 
           <ProtectedRoute exact path="/settings">
