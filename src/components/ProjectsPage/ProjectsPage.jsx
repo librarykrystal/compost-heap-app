@@ -64,6 +64,11 @@ function ProjectsPage() {
     window.scrollTo(0, 0)
   }, []);
 
+  const goNewProject = (event) => {
+    event.preventDefault();
+    history.push("/newproject");
+  }
+
   // Go to SettingsPage (cancel) without submitting and changes:
   const goSettingsCancel = (event) => {
     event.preventDefault();
@@ -95,8 +100,15 @@ function ProjectsPage() {
           })}
         </div>
       }
-      <AddBoxIcon sx={{ fontSize: 42 }} color="secondary" className="editIcon" />
-      <br /><br />
+      
+      <Button
+        variant="contained"
+        color="primary"
+        size="large"
+        // startIcon={<CheckBoxIcon />}
+        onClick={goNewProject}>ADD NEW PROJECT
+      </Button>
+      <br />
 
       <Button
         variant="contained"
