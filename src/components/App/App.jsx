@@ -19,6 +19,7 @@ import AddProjectPage from '../AddProjectPage/AddProjectPage';
 import AddTagPage from '../AddTagPage/AddTagPage';
 import DetailsPage from '../DetailsPage/DetailsPage';
 import EditIdeaPage from '../EditIdeaPage/EditIdeaPage';
+import EditProjectPage from '../EditProjectPage/EditProjectPage';
 import EditTagPage from '../EditTagPage/EditTagPage';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
@@ -52,6 +53,14 @@ function App() {
             <AboutPage />
           </Route>
 
+          <ProtectedRoute exact path="/newproject">
+            <AddProjectPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/newtag">
+            <AddTagPage />
+          </ProtectedRoute>
+
           <ProtectedRoute exact path="/user">
             <UserHome />
           </ProtectedRoute>
@@ -68,6 +77,10 @@ function App() {
             <EditIdeaPage />
           </ProtectedRoute>
 
+          <ProtectedRoute exact path="/editproject/:id">
+            <EditProjectPage />
+          </ProtectedRoute>
+
           <ProtectedRoute exact path="/edittag/:id">
             <EditTagPage />
           </ProtectedRoute>
@@ -80,10 +93,6 @@ function App() {
             <ProjectsPage />
           </ProtectedRoute>
 
-          <ProtectedRoute exact path="/newproject">
-            <AddProjectPage />
-          </ProtectedRoute>
-
           <ProtectedRoute exact path="/settings">
             <SettingsPage />
           </ProtectedRoute>
@@ -92,9 +101,7 @@ function App() {
             <TagsPage />
           </ProtectedRoute>
 
-          <ProtectedRoute exact path="/newtag">
-            <AddTagPage />
-          </ProtectedRoute>
+          
 
           <Route exact path="/login">
             {user.id ?
