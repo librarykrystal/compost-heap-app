@@ -92,8 +92,7 @@ function AddProjectPage() {
   // Go back home without submitting anything:
   const goBack = (event) => {
     event.preventDefault();
-    // TO DO: change this to go back to PROJECTS list?
-    history.push("/");
+    history.push("/projects");
   }
 
   return (
@@ -110,12 +109,48 @@ function AddProjectPage() {
         fullWidth
         id="title"
         required
-        label="Project Title"
+        label="Title"
         variant="standard"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
       <br /><br />
+
+      {/* TEXT input for TYPE */}
+      <TextField 
+        fullWidth
+        id="type"
+        label="Type"
+        variant="standard"
+        value={type}
+        onChange={(e) => setType(e.target.value)}
+      />
+      <br /><br />
+
+      {/* TEXT input for GENRE */}
+      <TextField 
+        fullWidth
+        id="genre"
+        label="Genre"
+        variant="standard"
+        value={genre}
+        onChange={(e) => setGenre(e.target.value)}
+      />
+      <br /><br />
+
+      {/* TEXT BOX input for NOTES */}
+      <TextField
+        id="notes"
+        label="Notes"
+        fullWidth
+        multiline
+        rows={8}
+        variant="outlined"
+        value={notes}
+        onChange={(e) => setNotes(e.target.value)}
+      />
+      <br /><br />
+
 
       {/* SUBMIT button */}
       <Button
