@@ -43,7 +43,7 @@ const theme = createTheme({
 });
 
 
-function AddTagPage() {
+function AddProjectPage() {
 
   const user = useSelector((store) => store.user);
 
@@ -52,12 +52,15 @@ function AddTagPage() {
 
   // State hooks for entry form
   const [title, setTitle] = useState('');
+  const [type, setType] = useState('');
+  const [genre, setGenre] = useState('');
+  const [notes, setNotes] = useState('');
 
   // CONSOLE LOG array of all form selections as they happen:
-  console.log('SELECTIONS...', ["title:", title]);
+  console.log('SELECTIONS...', ["title:", title, "type:", type, "genre:", genre, "notes:", notes]);
 
   // State hook for warning/prompt if no title is entered
-  //
+  const [titleWarning, setTitleWarning] = useState(false);
 
   // State hook for showing confirmation modal after submit
   const [showModal, setShowModal] = useState(false);
@@ -72,7 +75,18 @@ function AddTagPage() {
 
   // SUBMIT FORM function
   const submitForm = (e) => {
-    console.log('SUBMIT WAS CLICKED');
+    e.preventDefault();
+    // Check for headline entry, show warning (and do NOT submit) if no headline was entered:
+    if (!title) {
+      setTitleWarning(true);
+      console.log("NO TITLE, NO SUBMIT");
+    } else {
+      dispatch({ 
+        type: 'ADD_PROJECT',
+        payload: {title, type, genre, notes}
+    });
+      setShowModal(true);
+    }
   }
 
   // Go back home without submitting anything:
@@ -103,7 +117,6 @@ function AddTagPage() {
       />
       <br /><br />
 
-
       {/* SUBMIT button */}
       <Button
         type="submit"
@@ -133,4 +146,4 @@ function AddTagPage() {
   );
 }
 
-export default AddTagPage;
+export default AddProjectPage;
