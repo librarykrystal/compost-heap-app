@@ -16,8 +16,10 @@ UserHome
 DetailsPage
   - [x] IDEA: GET by IDEA ID
   - [x] TAG: GET by IDEA ID
+
 AddIdeaPage
   - [x] IDEA: POST
+
 EditIdeaPage
   - [ ] IDEA: GET by IDEA ID
   - [ ] TAG: GET ALL
@@ -27,8 +29,10 @@ EditIdeaPage
 
 TagsPage
   - [x] TAG: GET ALL
+
 AddIdeaPage
   - [x] TAG: POST
+
 EditIdeaPage
   - [x] TAG: GET by TAG ID
   - [ ] TAG: PUT
@@ -36,8 +40,10 @@ EditIdeaPage
 
 ProjectsPage
   - [x] PROJECT: GET ALL
+
 AddProjectPage
   - [ ] PROJECT: POST
+  
 EditProjectPage
   - [ ] PROJECT: GET by PROJECT ID
   - [ ] PROJECT: PUT
