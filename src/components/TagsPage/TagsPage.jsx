@@ -70,6 +70,7 @@ function TagsPage() {
   // Route to details of clicked item
   const goEdit = (tagId) => {
     console.log('goEdit CLICKED, ID:', tagId);
+    // dispatch to set tag ID?
     history.push(`/edittag/${tagId}`);
   }
 
