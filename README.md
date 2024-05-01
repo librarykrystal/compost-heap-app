@@ -35,7 +35,7 @@ AddTagPage
 
 EditTagPage
   - [x] TAG: GET by TAG ID
-  - [ ] TAG: PUT
+  - [x] TAG: PUT
   - [ ] TAG: DELETE
 
 ProjectsPage
