@@ -75,4 +75,32 @@ router.post('/', (req, res) => {
 });
 
 
+// PUT to UPDATE TAG
+router.put('/', (req, res) => {
+  console.log('PUT req.body:', req.body);
+  if (req.isAuthenticated()){
+    // let id = req.body.id;
+    const editQuery = `UPDATE "tag" SET 
+    "label" = $2, 
+    "hex" = $3
+    WHERE id = $1;`;
+    pool.query(editQuery, [
+      req.body.id,
+      req.body.label,
+      req.body.hex
+    ])
+    .then((result) => {
+        console.log('PUT result:', result);
+        res.sendStatus(204);
+    })
+    .catch((error) => {
+        console.log('PUT ERROR:', error);
+        res.sendStatus(500);
+    })
+  } else {
+    res.sendStatus(403);
+  }
+});
+
+
 module.exports = router;
