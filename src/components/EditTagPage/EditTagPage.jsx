@@ -85,8 +85,8 @@ function EditTagPage() {
       console.log("NO LABEL, NO SUBMIT");
     } else {
       dispatch({ 
-        type: 'ADD_TAG',
-        payload: {label, hex}
+        type: 'UPDATE_TAG',
+        payload: {id, label, hex}
     });
       setShowModal(true);
     }

@@ -7,6 +7,7 @@ function* tagSaga() {
   yield takeEvery('FETCH_TAG', fetchIt);
   yield takeEvery('FETCH_TAG_FOR_IDEA', fetchItbyIdeaId);
   yield takeEvery('ADD_TAG', addIt);
+  yield takeEvery('UPDATE_TAG', updateIt);
 }
 
 // WORKER SAGA for GET ALL
@@ -57,5 +58,15 @@ function* addIt(action) {
 }
 }
 
+// WORKER SAGA for PUT/UPDATE TAG
+function* updateIt(action) {
+  console.log('updateIt SAGA PUT TAG payload:', action.payload);
+  try {
+    yield axios.put(`/api/tag`, action.payload);
+    yield fetchIt({type: 'FETCH_TAG', payload: `${action.payload.id}`});
+  } catch (error) {
+    console.log('ERROR EDITING TAG:', error);
+  }
+}
 
 export default tagSaga;
