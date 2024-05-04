@@ -87,14 +87,17 @@ function EditTagPage() {
       dispatch({ 
         type: 'UPDATE_TAG',
         payload: {id, label, hex}
-    });
+      });
       setShowModal(true);
     }
   }
 
   const deleteThisTag = () => {
     // console.log('delete was clicked');
-    dispatch({ type: 'DELETE_TAG' });
+    dispatch({ 
+      type: 'DELETE_TAG',
+      payload: id
+    });
   }
 
   const goTagsCancel = (event) => {

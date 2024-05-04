@@ -74,7 +74,7 @@ function* updateIt(action) {
 function* deleteIt(action) {
   try {
       const tagToDelete = yield axios.delete(`/api/tag/${action.payload}`);
-      console.log('DELETE TAG SAGA payload:', tagToDelete.data);
+      console.log('DELETE TAG SAGA payload:', action.payload);
   } catch (error) {
     console.log('ERROR DELETING TAG:', error);
   }
