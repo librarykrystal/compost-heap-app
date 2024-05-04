@@ -92,6 +92,11 @@ function EditTagPage() {
     }
   }
 
+  const deleteThisTag = () => {
+    // console.log('delete was clicked');
+    dispatch({ type: 'DELETE_TAG' });
+  }
+
   const goTagsCancel = (event) => {
     event.preventDefault();
     dispatch({ type: 'CLEAR_TAG' });
@@ -136,6 +141,17 @@ function EditTagPage() {
               size="large"
               // startIcon={<CheckBoxIcon />}
               onClick={submitForm}>SUBMIT UPDATES
+            </Button>
+            <br /><br />
+
+            {/* DELETE button */}
+            <Button
+            type="submit"
+              variant="contained"
+              color="primary"
+              size="large"
+              // startIcon={<CheckBoxIcon />}
+              onClick={deleteThisTag}>DELETE THIS TAG
             </Button>
             <br /><br />
 
