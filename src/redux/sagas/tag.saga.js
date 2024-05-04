@@ -8,6 +8,7 @@ function* tagSaga() {
   yield takeEvery('FETCH_TAG_FOR_IDEA', fetchItbyIdeaId);
   yield takeEvery('ADD_TAG', addIt);
   yield takeEvery('UPDATE_TAG', updateIt);
+  yield takeEvery('DELETE_TAG', deleteIt);
 }
 
 // WORKER SAGA for GET ALL
@@ -66,6 +67,16 @@ function* updateIt(action) {
     yield fetchIt({type: 'FETCH_TAG', payload: `${action.payload.id}`});
   } catch (error) {
     console.log('ERROR EDITING TAG:', error);
+  }
+}
+
+// WORKER SAGA for DELETE TAG
+function* deleteIt(action) {
+  try {
+      const tagToDelete = yield axios.delete(`/api/tag/${action.payload}`);
+      console.log('DELETE TAG SAGA payload:', tagToDelete.data);
+  } catch (error) {
+    console.log('ERROR DELETING TAG:', error);
   }
 }
 
