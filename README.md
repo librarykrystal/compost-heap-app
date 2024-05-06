@@ -47,4 +47,4 @@ AddProjectPage
 EditProjectPage
   - [ ] PROJECT: GET by PROJECT ID
   - [ ] PROJECT: PUT
-  - [ ] PROJECT: DELETE
+  - [x] PROJECT: DELETE

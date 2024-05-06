@@ -56,6 +56,8 @@ function EditProjectPage() {
       type: 'DELETE_PROJECT',
       payload: id
     });
+    history.push("/projects");
+    // confirmation modal?
   }
 
   const goTagsCancel = (event) => {
