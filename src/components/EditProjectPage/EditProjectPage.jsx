@@ -51,6 +51,13 @@ function EditProjectPage() {
     dispatch({ type: 'FETCH_PROJECT', payload: id });
   }, []);
 
+  const deleteThisProject = () => {
+    dispatch({ 
+      type: 'DELETE_PROJECT',
+      payload: id
+    });
+  }
+
   const goTagsCancel = (event) => {
     event.preventDefault();
     history.push("/projects");
@@ -58,14 +65,25 @@ function EditProjectPage() {
 
   return (
     <ThemeProvider theme={theme}>
+
       <div className="container">
         <h2>Edit project page for {user.username}!</h2>
         <p>This is where you can edit a project.</p>
       </div>
-      {/* { project &&
-        <Typography>PROJECT ID: {project.id}</Typography>
-      } */}
 
+      <Typography>PROJECT ID: {id}</Typography>
+      <br /><br />
+
+      {/* DELETE button */}
+      <Button
+        type="submit"
+        variant="contained"
+        color="primary"
+        size="large"
+        onClick={deleteThisProject}>DELETE THIS PROJECT
+      </Button>
+      <br /><br />
+      
       <Button
         variant="contained"
         color="primary"
@@ -73,6 +91,7 @@ function EditProjectPage() {
         // startIcon={<CheckBoxIcon />}
         onClick={goTagsCancel}>BACK TO PROJECTS
       </Button>
+
     </ThemeProvider>
   );
 }
