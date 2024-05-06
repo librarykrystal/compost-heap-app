@@ -11,6 +11,7 @@ import '@fontsource/libre-baskerville';
 import grey from '@mui/material/colors/grey';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
+import Card from '@mui/material/Card';
 import Switch from '@mui/material/Switch';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import EditIcon from '@mui/icons-material/Edit';
@@ -69,6 +70,11 @@ function ProjectsPage() {
     history.push("/newproject");
   }
 
+  const goEdit = (projectId) => {
+    console.log('goEdit CLICKED, ID:', projectId);
+    history.push(`/editproject/${projectId}`);
+  }
+
   // Go to SettingsPage (cancel) without submitting and changes:
   const goSettingsCancel = (event) => {
     event.preventDefault();
@@ -89,12 +95,16 @@ function ProjectsPage() {
           {projects.map(project => {
             return (
               <div key={project.id} >
-                <div className="homeListItem" >
-                <Stack spacing={2} direction="row" sx={{ mb: 2, mt: 2 }} alignItems="center">
-                  {/* <EditIcon sx={{ fontSize: 28 }} color="primary" className="editIcon" /> */}
-                  <Typography sx={{ fontWeight: 700, mt:2 }}>{project.id} {project.title}</Typography>
+                <Card
+                  variant="outlined"
+                  className="tagListCard"
+                  sx={{ m:2, pl:2, pr:3, boxShadow: 1}}
+                  onClick={() => goEdit(project.id)}
+                >
+                  <Stack spacing={1.5} direction="row" sx={{ mb: .5, mt: .5 }} alignItems="center">
+                    <Typography sx={{ fontWeight: 700, mt:2}}>{project.title}</Typography>
                   </Stack>
-                </div>
+                </Card>
               </div>
             );
           })}
