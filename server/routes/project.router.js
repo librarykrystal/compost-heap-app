@@ -21,6 +21,26 @@ router.get('/', (req, res) => {
   }
 });
 
+// DELETE
+router.delete('/:id', (req, res) => {
+  console.log('router.delete ID:', req.params.id);
+  // only do DELETE if authenticated:
+  if (req.isAuthenticated()){
+    let id = req.params.id;
+    const queryText = `DELETE FROM project WHERE id = $1;`;
+    pool.query(queryText, [id])
+    .then((result) => {
+        console.log('DELETE result:', result);
+        res.sendStatus(204);
+    })
+    .catch((error) => {
+        console.log('DELETE ERROR:', error);
+        res.sendStatus(500);
+    })
+  } else {
+    res.sendStatus(403);
+  }
+});
 
 
 module.exports = router;
