@@ -4,6 +4,7 @@ import { put, takeEvery, takeLatest } from 'redux-saga/effects';
 // WATCHER SAGA
 function* projectSaga() {
   yield takeEvery('FETCH_ALL_PROJECTS', fetchEm);
+  yield takeEvery('ADD_PROJECT', addIt);
   yield takeEvery('DELETE_PROJECT', deleteIt);
 }
 
@@ -17,6 +18,18 @@ function* fetchEm(action) {
   } catch (error) {
     console.log('ERROR GETTING PROJECTS:', error);
   }
+}
+
+// WORKER SAGA for ADD PROJECT
+function* addIt(action) {
+  console.log('POST action:', action.payload);
+  try {
+    const newProject = yield axios.post('/api/project', action.payload);
+    console.log('POST SAGA SUCCESS:', newProject.data.id);
+    // yield fetchIt({type: 'FETCH_PROJECT', payload: newTag.data.id });
+  } catch (error) {
+  console.log('ERROR ADDING PROJECT:', error);
+}
 }
 
 // WORKER SAGA for DELETE PROJECT
