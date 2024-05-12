@@ -21,6 +21,38 @@ router.get('/', (req, res) => {
   }
 });
 
+// POST / ADD
+router.post('/', (req, res) => {
+  console.log('project POST route');
+  console.log('is authenticated?', req.isAuthenticated());
+  console.log('user', req.user);
+  console.log('REQ.BODY for PROJECT ADD:', req.body);
+  // only do POST if authenticated:
+  if (req.isAuthenticated()){
+    const addQuery = `
+    INSERT INTO "project" ("user_id", "title", "type", "genre", "notes")
+    VALUES ($1, $2, $3, $4, $5)
+    RETURNING "id";
+    `
+    pool.query(addQuery, [
+      req.user.id,
+      req.body.title,
+      req.body.type,
+      req.body.genre,
+      req.body.notes
+    ])
+    .then(result => {
+      console.log('New project ID:', result.rows[0].id);
+      res.send({ id: result.rows[0].id });
+    }).catch(err => {
+      console.log('PROJECT POST ERROR:', err);
+      res.sendStatus(500)
+    })
+  } else {
+    res.sendStatus(403);
+  }
+});
+
 // DELETE
 router.delete('/:id', (req, res) => {
   console.log('router.delete ID:', req.params.id);
