@@ -42,7 +42,7 @@ ProjectsPage
   - [x] PROJECT: GET ALL
 
 AddProjectPage
-  - [ ] PROJECT: POST
+  - [x] PROJECT: POST
   
 EditProjectPage
   - [ ] PROJECT: GET by PROJECT ID
