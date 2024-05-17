@@ -23,7 +23,7 @@ function* fetchEm(action) {
   }
 }
 
-// WORKER SAGA for GET ONE by Idea ID
+// WORKER SAGA for GET ONE by Tag ID
 function* fetchIt(action) {
   try {
     const tag = yield axios.get(`/api/tag/${action.payload}`);
