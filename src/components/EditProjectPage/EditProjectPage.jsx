@@ -11,6 +11,7 @@ import '@fontsource/cabin/700.css';
 import '@fontsource/libre-baskerville';
 import grey from '@mui/material/colors/grey';
 import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 
 // EDIT PROJECT PAGE is reached through ProjectsPage and will include:
 // Ability to fully edit this project and submit
@@ -47,6 +48,12 @@ function EditProjectPage() {
   const history = useHistory();
   const { id } = useParams();
 
+  // State hooks for edit form
+  const [title, setTitle] = useState(project.title);
+  const [type, setType] = useState(project.type);
+  const [genre, setGenre] = useState(project.genre);
+  const [notes, setNotes] = useState(project.notes);
+
   useEffect(() => {
     dispatch({ type: 'FETCH_PROJECT', payload: id });
   }, []);
@@ -70,11 +77,61 @@ function EditProjectPage() {
 
       <div className="container">
         <h2>Edit project page for {user.username}!</h2>
-        <p>This is where you can edit a project.</p>
+        <p>This is where you can edit a project. Right now, GET by ID is complete, but editing function is not yet built.</p>
       </div>
-      
+
       {project &&
-      <Typography>PROJECT ID: {project.id}</Typography>
+        <>
+          <Typography>PROJECT ID: {project.id}</Typography>
+          <br /><br />
+          
+          {/* TEXT input for TITLE */}
+          <TextField 
+            fullWidth
+            id="title"
+            required
+            label="Project Title"
+            variant="standard"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <br /><br />
+
+          {/* TEXT input for TYPE */}
+          <TextField 
+            fullWidth
+            id="type"
+            label="Type"
+            variant="standard"
+            value={type}
+            onChange={(e) => setType(e.target.value)}
+          />
+          <br /><br />
+
+          {/* TEXT input for GENRE */}
+          <TextField 
+            fullWidth
+            id="genre"
+            label="Genre"
+            variant="standard"
+            value={genre}
+            onChange={(e) => setGenre(e.target.value)}
+          />
+          <br /><br />
+
+          {/* TEXT BOX input for NOTES */}
+          <TextField
+            id="notes"
+            label="Notes"
+            fullWidth
+            multiline
+            rows={8}
+            variant="outlined"
+            value={notes}
+            onChange={(e) => setNotes(e.target.value)}
+          />
+          <br /><br />
+        </>
       }
       
       <br /><br />
