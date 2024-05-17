@@ -42,7 +42,7 @@ const theme = createTheme({
 function EditProjectPage() {
 
   const user = useSelector((store) => store.user);
-  // const project = useSelector((store) => store.project);
+  const project = useSelector((store) => store.project);
   const dispatch = useDispatch();
   const history = useHistory();
   const { id } = useParams();
@@ -72,8 +72,11 @@ function EditProjectPage() {
         <h2>Edit project page for {user.username}!</h2>
         <p>This is where you can edit a project.</p>
       </div>
-
-      <Typography>PROJECT ID: {id}</Typography>
+      
+      {project &&
+      <Typography>PROJECT ID: {project.id}</Typography>
+      }
+      
       <br /><br />
 
       {/* DELETE button */}

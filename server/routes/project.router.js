@@ -21,6 +21,27 @@ router.get('/', (req, res) => {
   }
 });
 
+// GET PROJECT by ID
+router.get('/:id', (req, res) => {
+  console.log('specific project GET route');
+  console.log('is authenticated?', req.isAuthenticated());
+  console.log('user', req.user);
+  console.log('Get PROJECT by ID req.params.id:', req.params.id);
+  // only do GET if authenticated:
+  if (req.isAuthenticated()){
+    let id = req.params.id;
+    let queryText = `SELECT * FROM project WHERE "id" = $1 AND "user_id" = ${req.user.id};`;
+    pool.query(queryText, [id]).then((result) => {
+        res.send(result.rows[0]);
+    }).catch((error) => {
+        console.log(error);
+        res.sendStatus(500);
+    });
+  } else {
+      res.sendStatus(403);
+  }
+});
+
 // POST / ADD
 router.post('/', (req, res) => {
   console.log('project POST route');
