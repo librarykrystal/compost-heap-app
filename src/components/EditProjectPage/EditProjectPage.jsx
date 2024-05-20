@@ -67,8 +67,9 @@ function EditProjectPage() {
     // confirmation modal?
   }
 
-  const goTagsCancel = (event) => {
+  const goProjectsCancel = (event) => {
     event.preventDefault();
+    dispatch({ type: 'CLEAR_PROJECT' });
     history.push("/projects");
   }
 
@@ -151,7 +152,7 @@ function EditProjectPage() {
         color="primary"
         size="large"
         // startIcon={<CheckBoxIcon />}
-        onClick={goTagsCancel}>BACK TO PROJECTS
+        onClick={goProjectsCancel}>BACK TO PROJECTS
       </Button>
 
     </ThemeProvider>
