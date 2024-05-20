@@ -58,6 +58,14 @@ function EditProjectPage() {
     dispatch({ type: 'FETCH_PROJECT', payload: id });
   }, []);
 
+  // Second useEffect to get around the FETCH being incomplete upon render, thus not updating initial state
+  useEffect(() => {
+    setTitle(project.title);
+    setType(project.type);
+    setGenre(project.genre);
+    setNotes(project.notes);
+  }, [project]);
+
   const deleteThisProject = () => {
     dispatch({ 
       type: 'DELETE_PROJECT',
