@@ -6,6 +6,7 @@ function* projectSaga() {
   yield takeEvery('FETCH_ALL_PROJECTS', fetchEm);
   yield takeEvery('FETCH_PROJECT', fetchIt);
   yield takeEvery('ADD_PROJECT', addIt);
+  yield takeEvery('UPDATE_PROJECT', updateIt);
   yield takeEvery('DELETE_PROJECT', deleteIt);
 }
 
@@ -43,6 +44,17 @@ function* addIt(action) {
   } catch (error) {
   console.log('ERROR ADDING PROJECT:', error);
 }
+}
+
+// WORKER SAGA for PUT/UPDATE PROJECT
+function* updateIt(action) {
+  console.log('updateIt SAGA PUT PROJECT payload:', action.payload);
+  try {
+    yield axios.put(`/api/project`, action.payload);
+    yield fetchIt({type: 'FETCH_PROJECT', payload: `${action.payload.id}`});
+  } catch (error) {
+    console.log('ERROR EDITING PROJECT:', error);
+  }
 }
 
 // WORKER SAGA for DELETE PROJECT
