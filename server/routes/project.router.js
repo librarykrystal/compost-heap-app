@@ -74,6 +74,37 @@ router.post('/', (req, res) => {
   }
 });
 
+// PUT to UPDATE PROJECT
+router.put('/', (req, res) => {
+  console.log('PUT req.body:', req.body);
+  if (req.isAuthenticated()){
+    // let id = req.body.id;
+    const editQuery = `UPDATE "project" SET 
+    "title" = $2, 
+    "type" = $3, 
+    "genre" = $4,
+    "notes" = $5
+    WHERE id = $1;`;
+    pool.query(editQuery, [
+      req.body.id,
+      req.body.title,
+      req.body.type, 
+      req.body.genre,
+      req.body.notes
+    ])
+    .then((result) => {
+        console.log('PUT result:', result);
+        res.sendStatus(204);
+    })
+    .catch((error) => {
+        console.log('PUT ERROR:', error);
+        res.sendStatus(500);
+    })
+  } else {
+    res.sendStatus(403);
+  }
+});
+
 // DELETE
 router.delete('/:id', (req, res) => {
   console.log('router.delete ID:', req.params.id);

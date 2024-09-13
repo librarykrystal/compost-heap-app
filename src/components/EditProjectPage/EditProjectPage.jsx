@@ -70,7 +70,7 @@ function EditProjectPage() {
     console.log('SAVE CHANGES button clicked');
     dispatch({ 
       type: 'UPDATE_PROJECT',
-      payload: id
+      payload: {id, title, type, genre, notes}
     });
     // history.push("/projects");
     // confirmation modal?
