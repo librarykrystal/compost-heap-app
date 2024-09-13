@@ -66,6 +66,15 @@ function EditProjectPage() {
     setNotes(project.notes);
   }, [project]);
 
+  const updateThisProject = () => {
+    console.log('SAVE CHANGES button clicked');
+    dispatch({ 
+      type: 'UPDATE_PROJECT',
+      payload: id
+    });
+    // history.push("/projects");
+    // confirmation modal?
+  }
   const deleteThisProject = () => {
     dispatch({ 
       type: 'DELETE_PROJECT',
@@ -143,6 +152,16 @@ function EditProjectPage() {
         </>
       }
       
+      <br /><br />
+
+      {/* SAVE CHANGES button */}
+      <Button
+        type="submit"
+        variant="contained"
+        color="primary"
+        size="large"
+        onClick={updateThisProject}>SAVE CHANGES
+      </Button>
       <br /><br />
 
       {/* DELETE button */}
